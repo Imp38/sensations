@@ -14,6 +14,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Strategy](#strategy)
     - [Target audience](#target-audience)
     - [User stories](#user-stories)
+    - [Credits](#credits)
 
 ## UX
 
@@ -48,3 +49,9 @@ Sensations is aimed at two groups:
 - As a visitor, I want links to social media, so that I can follow Sensations.
 - As the Sensations business owner, I want to show the upcoming sound-recording candle, so that I can build interest in it before it launches.
 
+ ## Credits
+
+ - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
+- [Bootstrap 5.3](https://getbootstrap.com/) for the layout, navbar and responsive grid
+- [Font Awesome](https://fontawesome.com/) for icons
+- [Google Fonts](https://fonts.google.com/) for the Lora and Nunito fonts
