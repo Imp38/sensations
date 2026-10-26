@@ -7,6 +7,14 @@ Sensations is a website for a custom candle business. It helps people find a can
 
 Welcome to Sensations, where a candle becomes something more. Whether you want to relive precious memories of a loved one overseas or no longer with us, or simply need a moment of calm, our custom candles let you choose a scent, a shape and a mood that feels right. Browse the range, or get in touch to design a candle of your own.
 
+## Table of contents
+
+- [About](#about)
+- [User Experience (UX)](#ux)
+  - [Strategy](#strategy)
+    - [Target audience](#target-audience)
+    - [User stories](#user-stories)
+
 ## UX
 
 ### Strategy
@@ -19,3 +27,24 @@ Sensations is aimed at two groups:
 1. **Stressed or busy people**: who want a candle to help them unwind, focus or create a calm space, particularly after a demanding day at work.
 
 2. **Gift buyers**: looking for something personal for someone else, including people who want to remember a loved one or stay close to someone who is far away.
+
+### User stories
+
+**Must have**
+
+- As a visitor, I want to see what Sensations offers as soon as the page opens, so that I know if it's right for me.
+- As a stressed worker, I want to browse candles by mood (relax, focus, energise), so that I can find one that suits how I want to feel.
+- As a shopper, I want to see each candle's scent, size and price, so that I can compare them.
+- As a user, I want a clear navigation menu on every page, so that I can find things easily.
+- As a user on my phone, I want the site to work on a small screen, so that I can browse anywhere.
+
+**Should have**
+
+- As a gift buyer, I want to see gift and memorial options, so that I can find something meaningful for someone else.
+- As a customer, I want to enquire about a custom candle (shape, scent, crackle wick), so that I can get one made for me.
+
+**Could have**
+
+- As a visitor, I want links to social media, so that I can follow Sensations.
+- As the Sensations business owner, I want to show the upcoming sound-recording candle, so that I can build interest in it before it launches.
+
