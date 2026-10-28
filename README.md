@@ -54,18 +54,8 @@ Sensations is aimed at two groups:
 
 I planned the layout of the Home page with wireframes at three screen sizes, drawn in Excalidraw, starting with mobile and working up.
 
-#### Mobile
 
-![Home page wireframe, mobile view](assets/wireframe/wireframe-home-mobile.png)
-
-#### Tablet
-
-![Home page wireframe, tablet landscape view](assets/wireframe/wireframe-home-tablet.png)
-
-#### Desktop
-
-![Home page wireframe, desktop view](assets/wireframe/wireframe-home-desktop.png)
-
+- Home page: [View all sizes in Excalidraw](https://excalidraw.com/#json=fdP5koSWRAkm2BOPnYN7e,admn2GMpF2jozJRBVkGfUg) | PNGs: [Mobile](assets/wireframe/wireframe-home-mobile.png) | [Tablet](assets/wireframe/wireframe-home-tablet.png) | [Desktop](assets/wireframe/wireframe-home-desktop.png)
 
  ## Credits
 
