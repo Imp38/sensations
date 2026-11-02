@@ -58,6 +58,7 @@ I planned the layout of the Home page with wireframes at three screen sizes, dra
 
 - Home page: [View all sizes in Excalidraw](https://excalidraw.com/#json=fdP5koSWRAkm2BOPnYN7e,admn2GMpF2jozJRBVkGfUg) | PNGs: [Mobile](assets/wireframe/wireframe-home-mobile.png) | [Tablet](assets/wireframe/wireframe-home-tablet.png) | [Desktop](assets/wireframe/wireframe-home-desktop.png)
 - Candles page: [View all sizes in Excalidraw](https://excalidraw.com/#json=kDwd309jPNA6DRb74UTtb,anNZee22k9o65CHl411oOA) | PNGs: [Mobile](assets/wireframe/wireframe-candles-mobile.png) | [Tablet](assets/wireframe/wireframe-candles-tablet.png) | [Desktop](assets/wireframe/wireframe-candles-desktop.png)
+- Gallery page: [View all sizes in Excalidraw](https://excalidraw.com/#json=SMt9CQW0mbja2K5XBbniC,qoA03XfeAS90V35jBVMY-w) | PNGs: [Mobile](assets/wireframe/wireframe-gallery-mobile.png) | [Tablet](assets/wireframe/wireframe-gallery-tablet.png) | [Desktop](assets/wireframe/wireframe-gallery-desktop.png)
 
 Note: Opening the Excalidraw links may show a warning about replacing the current canvas. This is normal, and the PNGs open directly.
 
