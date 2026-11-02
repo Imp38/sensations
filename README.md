@@ -44,6 +44,7 @@ Sensations is aimed at two groups:
 
 - As a gift buyer, I want to see gift and memorial options, so that I can find something meaningful for someone else.
 - As a customer, I want to enquire about a custom candle (shape, scent, crackle wick), so that I can get one made for me.
+- As a visitor, I want to look through past candle designs, so that I can get ideas and decide what mood I want in a candle of my own.
 
 **Could have**
 
@@ -57,6 +58,8 @@ I planned the layout of the Home page with wireframes at three screen sizes, dra
 
 - Home page: [View all sizes in Excalidraw](https://excalidraw.com/#json=fdP5koSWRAkm2BOPnYN7e,admn2GMpF2jozJRBVkGfUg) | PNGs: [Mobile](assets/wireframe/wireframe-home-mobile.png) | [Tablet](assets/wireframe/wireframe-home-tablet.png) | [Desktop](assets/wireframe/wireframe-home-desktop.png)
 - Candles page: [View all sizes in Excalidraw](https://excalidraw.com/#json=kDwd309jPNA6DRb74UTtb,anNZee22k9o65CHl411oOA) | PNGs: [Mobile](assets/wireframe/wireframe-candles-mobile.png) | [Tablet](assets/wireframe/wireframe-candles-tablet.png) | [Desktop](assets/wireframe/wireframe-candles-desktop.png)
+
+Note: Opening the Excalidraw links may show a warning about replacing the current canvas. This is normal, and the PNGs open directly.
 
  ## Credits
 
