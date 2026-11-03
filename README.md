@@ -15,6 +15,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Target audience](#target-audience)
     - [User stories](#user-stories)
   - [Skeleton](#skeleton)
+  - [Surface](#surface)
 - [Credits](#credits)
 
 ## UX
