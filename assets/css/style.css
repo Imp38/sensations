@@ -1,13 +1,29 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-
-h1 {
-    color: red;
-    font-family: 'Lora', sans-serif;
+/* CSS Variables for Colors and Fonts */
+:root {
+    --primary-font: 'Nunito', sans-serif;
+    --secondary-font: 'Lora', serif;
+    --background-color: #ffffff; /* page and card background */
+    --primary-color: #2f231d; /* navbar and footer background */
+    --secondary-color: #ffffff; /* navbar and footer text */
+    --heading-color: #412e23; /* headings */
+    --text-color: #2e2520; /* body text */
+    --highlight-color: #6b4226; /* buttons */
+    --highlight-color-light: #8a5e3c; /* navbar button on hover */
 }
 
-p {
-    color: blue;
-    font-family: 'Nunito', sans-serif;
+/* Global Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--primary-font);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--heading-color);
+    font-family: var(--secondary-font);
 }
