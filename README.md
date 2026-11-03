@@ -63,6 +63,27 @@ I planned the layout of the Home page with wireframes at three screen sizes, dra
 
 Note: Opening the Excalidraw links may show a warning about replacing the current canvas. This is normal, and the PNGs open directly.
 
+### Surface
+
+| Colour | Hex | Used for |
+|---|---|---|
+| White | `#ffffff` | Page and card backgrounds, navbar and footer text |
+| Dark Coffee | `#2f231d` | Navbar and footer |
+| Dark Coffee | `#412e23` | Headings |
+| Dark Coffee | `#2e2520` | Body text |
+| Brown Bark | `#6b4226` | Buttons and outlines |
+| Toffee Brown | `#8a5e3c` | Navbar button on hover |
+
+I wanted Sensations to feel warm and calm, so I used a palette of browns, the colour of candle wax, wood and coffee. The page itself stays white, which keeps the text easy to read and lets the browns stand out in the navbar, footer, headings and buttons.
+
+I built the palette with [Coolors](https://coolors.co/2f231d-2e2520-8a5e3c-6b4226-412e23), and I used it to check that every text and background pair has good contrast, because accessibility mattered to me. All of them are above the 4.5:1 minimum, and body text on white is almost 15:1.
+
+![Colour palette for Sensations, showing five brown shades with their hex codes](assets/images/colour-palette.png)
+
+The darkest browns are used for the navbar, footer, headings and body text. The two lighter browns are used for buttons: the middle brown for the button and its outline, and the lightest for the navbar button when it's hovered over.
+
+
+
  ## Credits
 
  - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
