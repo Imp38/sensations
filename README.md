@@ -16,6 +16,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [User stories](#user-stories)
   - [Skeleton](#skeleton)
   - [Surface](#surface)
+    - [Colour](#colour)
 - [Credits](#credits)
 
 ## UX
@@ -66,6 +67,8 @@ I planned the layout of the Home page with wireframes at three screen sizes, dra
 Note: Opening the Excalidraw links may show a warning about replacing the current canvas. This is normal, and the PNGs open directly.
 
 ### Surface
+
+#### **Colour**
 
 | Colour | Hex | Used for |
 |---|---|---|
