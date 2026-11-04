@@ -88,10 +88,11 @@ I built the palette with [Coolors](https://coolors.co/2f231d-2e2520-8a5e3c-6b422
 The darkest browns are used for the navbar, footer, headings and body text. The two lighter browns are used for buttons: the middle brown for the button and its outline, and the lightest for the navbar button when it's hovered over.
 
 
+## Credits
 
- ## Credits
-
- - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
-- [Bootstrap 5.3](https://getbootstrap.com/) for the layout, navbar and responsive grid
-- [Font Awesome](https://fontawesome.com/) for icons
-- [Google Fonts](https://fonts.google.com/) for the Lora and Nunito fonts
+- Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
+- Hero image: generated with [Google Gemini](https://gemini.google.com/), compressed with [TinyJPG](https://tinyjpg.com/).
+- Fonts: [Lora](https://fonts.google.com/specimen/Lora) and [Nunito](https://fonts.google.com/specimen/Nunito) from Google Fonts.
+- Layout and components: [Bootstrap 5.3](https://getbootstrap.com/).
+- Icons: [Font Awesome](https://fontawesome.com/).
+- Colour palette: created and contrast-checked with [Coolors](https://coolors.co/2f231d-2e2520-8a5e3c-6b4226-412e23).
