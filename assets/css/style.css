@@ -19,6 +19,9 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: var(--primary-font);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1,
@@ -79,6 +82,29 @@ h3 {
 }
 
 /* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.footer a {
+    color: var(--secondary-color);
+}
+
+.footer-hours {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+    text-decoration: underline;
+}
+
+.social-link {
+    margin-left: 0.75rem;
+    padding: 0.5rem;
+}
 
 /* Media Queries for Responsive Design */
 
