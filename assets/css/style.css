@@ -38,12 +38,15 @@ h3 {
 }
 
 .navbar .nav-link {
-    color: var(--secondary-color);
+    color: var(--background-color);
+    transition: background-color 0.2s ease;
+
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus-visible {
-    text-decoration: underline;
+    color: var(--highlight-color-light);
+    
 }
 
 .navbar .nav-link.active {
@@ -109,21 +112,32 @@ h3 {
     opacity: 0.85;
 }
 
-.footer a:hover,
-.footer a:focus-visible {
-    text-decoration: underline;
-}
-
-.social-link {
+/* Social icons */
+.footer .social-link {
+    color: var(--background-color);
+    font-size: 1.5rem;
     margin-left: 0.75rem;
     padding: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+}
+
+.footer .social-link:hover,
+.footer .social-link:focus-visible {
+    color: var(--highlight-color-light);
+    opacity: 1;
+    text-decoration: none;
 }
 
 /* Media Queries for Responsive Design */
-
 @media (min-width: 992px) {
     .hero {
         height: 450px;
         background-position: center;
+    }
+
+    .footer .social-link {
+        font-size: 2rem;
     }
 }
