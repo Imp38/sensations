@@ -17,13 +17,18 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Skeleton](#skeleton)
   - [Surface](#surface)
     - [Colour](#colour)
+- [Features](#features)
+  - [Navigation](#navigation)
+  - [Home page](#home-page)
+- [Testing](#testing)
+  - [Bugs found and fixed](#bugs-found-and-fixed)
+  - [Known issues](#known-issues)
 - [Credits](#credits)
 
 ## UX
 
 ### Strategy
 Everyone has someone they miss, whether that is a loved one who is no longer here, or a partner or friend who is deployed overseas, in the forces or in commercial work. Sensations is built around that feeling. A candle with a scent that reminds you of someone is a simple way to feel close to them, and a custom candle can also help you unwind after a stressful day. The aim of the site is to make it easy to find or design a candle that fits the moment.
-
 
 #### Target audience
 Sensations is aimed at two groups:
@@ -57,12 +62,17 @@ Sensations is aimed at two groups:
 
 I planned the layout of the Home page with wireframes at three screen sizes, drawn in Excalidraw, starting with mobile and working up.
 
-
 - Home page: [View all sizes in Excalidraw](https://excalidraw.com/#json=fdP5koSWRAkm2BOPnYN7e,admn2GMpF2jozJRBVkGfUg) | PNGs: [Mobile](assets/wireframe/wireframe-home-mobile.png) | [Tablet](assets/wireframe/wireframe-home-tablet.png) | [Desktop](assets/wireframe/wireframe-home-desktop.png)
 - Candles page: [View all sizes in Excalidraw](https://excalidraw.com/#json=kDwd309jPNA6DRb74UTtb,anNZee22k9o65CHl411oOA) | PNGs: [Mobile](assets/wireframe/wireframe-candles-mobile.png) | [Tablet](assets/wireframe/wireframe-candles-tablet.png) | [Desktop](assets/wireframe/wireframe-candles-desktop.png)
 - Gallery page: [View all sizes in Excalidraw](https://excalidraw.com/#json=SMt9CQW0mbja2K5XBbniC,qoA03XfeAS90V35jBVMY-w) | PNGs: [Mobile](assets/wireframe/wireframe-gallery-mobile.png) | [Tablet](assets/wireframe/wireframe-gallery-tablet.png) | [Desktop](assets/wireframe/wireframe-gallery-desktop.png)
 - Custom orders page: [View all sizes in Excalidraw](https://excalidraw.com/#json=PDI2VwuLRafEuKjVjYz-C,iK0aJgdXGHB7iFDIKFGXRw) | PNGs: [Mobile](assets/wireframe/wireframe-custom-orders-mobile.png) | [Tablet](assets/wireframe/wireframe-custom-orders-tablet.png) | [Desktop](assets/wireframe/wireframe-custom-orders-desktop.png)
 - Success page: [View all sizes in Excalidraw](https://excalidraw.com/#json=CZ3Ce9ZrhSUcGao1KSz15,I-RfXYvLUIULMRFXDWunqw) | PNGs: [Mobile](assets/wireframe/wireframe-success-mobile.png) | [Tablet](assets/wireframe/wireframe-success-tablet.png) | [Desktop](assets/wireframe/wireframe-success-desktop.png)
+
+#### Differences from the wireframes
+
+- The intro picture is a portrait crop, shown at its natural size beside the text, instead of the wider image in the wireframe.
+- The mood cards use square images, and the mood name sits above each picture as drawn.
+- The footer includes phone opening hours, and three social links (Facebook, Instagram and X).
 
 Note: Opening the Excalidraw links may show a warning about replacing the current canvas. This is normal, and the PNGs open directly.
 
@@ -87,6 +97,42 @@ I built the palette with [Coolors](https://coolors.co/2f231d-2e2520-8a5e3c-6b422
 
 The darkest browns are used for the navbar, footer, headings and body text. The two lighter browns are used for buttons: the middle brown for the button and its outline, and the lightest for the navbar button when it's hovered over.
 
+## Features
+
+### Navigation
+
+A sticky navigation bar on every page. On larger screens, the links sit across the top, with the current page in bold.
+
+![Navigation bar on a desktop screen, showing the Sensations name and five links](assets/screenshots/navbar-desktop.png)
+
+On small screens, the links collapse into a menu button, which opens to show them stacked.
+
+![Navigation bar on a phone, with the menu open and five links listed](assets/screenshots/navbar-mobile-open.png)
+
+### Home page
+- A full-width hero image of lit candles.
+- A tagline and an Explore Candles button that links to the Candles page.
+- A short introduction with a picture.
+- Four mood cards (Relax, Focus, Energise and Reminisce), shown two by two on phones and four across on larger screens.
+- A footer with contact details, phone opening hours and social links that open in a new tab.
+
+## Testing
+
+### Bugs found and fixed
+
+| Bug | Cause | Fix | Evidence |
+|---|---|---|---|
+| A stray underline appeared beside the Facebook and Instagram icons in the footer | Bootstrap's default link style (`text-decoration: underline`) underlined the space after each icon | Added `text-decoration: none` to the social link rules for normal, hover and focus states | See screenshots below |
+**Before the fix:** a small line appears beside the first two icons.
+
+![Footer social icons with a stray underline beside the Facebook and Instagram icons](assets/screenshots/bug-social-underline-before.png)
+
+**Cause:** Bootstrap's `a` rule applies an underline to every link.
+
+![Browser developer tools showing Bootstrap's link rule setting text-decoration to underline](assets/screenshots/bug-social-underline-devtools.png)
+
+### Known issues
+- The mobile menu stays open after tapping an in-page link such as Contact. A small script to close it is planned.
 
 ## Credits
 
