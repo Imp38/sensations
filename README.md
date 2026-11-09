@@ -91,7 +91,7 @@ The darkest browns are used for the navbar, footer, headings and body text. The 
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
-- Hero image: generated with [Google Gemini](https://gemini.google.com/), compressed with [TinyJPG](https://tinyjpg.com/).
+- Hero, intro and mood card images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
 - Fonts: [Lora](https://fonts.google.com/specimen/Lora) and [Nunito](https://fonts.google.com/specimen/Nunito) from Google Fonts.
 - Layout and components: [Bootstrap 5.3](https://getbootstrap.com/).
 - Icons: [Font Awesome](https://fontawesome.com/).

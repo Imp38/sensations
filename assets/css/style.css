@@ -31,7 +31,6 @@ h3 {
     font-family: var(--secondary-font);
 }
 
-
 /* Navbar */
 .navbar {
     background-color: var(--primary-color);
@@ -40,13 +39,11 @@ h3 {
 .navbar .nav-link {
     color: var(--background-color);
     transition: background-color 0.2s ease;
-
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus-visible {
-    color: var(--highlight-color-light);
-    
+    color: var(--highlight-color-light);  
 }
 
 .navbar .nav-link.active {
@@ -82,6 +79,21 @@ h3 {
 .intro-text {
     font-size: 1.25rem;
     margin-bottom: 0;
+}
+
+/* Mood cards */
+.mood-image {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.mood-card {
+      border: 1px solid var(--highlight-color-light);
+      overflow: hidden;
+  }
+
+.mood-card .card-title {
+    color: var(--heading-color);
 }
 
 /* Buttons */
