@@ -97,6 +97,11 @@ h3 {
     color: var(--heading-color);
 }
 
+/* Candle cards */
+.candle-image {
+    object-fit: cover;
+}
+
 /* Buttons */
 .btn-outline-brown {
     color: var(--highlight-color);

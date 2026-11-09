@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse our scented candles by mood: relax, focus, energise or reminisce. Each candle shows its scent, size and price">
+    <title>Sensations | Candles</title>
+
+    <!-- Favicon: Twemoji candle (CC-BY 4.0), generated with favicon.io -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/favicon/favicon-32x32.png" alt="" width="32" height="32"
+                        class="d-inline-block align-text-top">
+                    Sensations
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="candles.html">Candles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="custom-orders.html">Custom orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="candles py-5">
+            <div class="container">
+                <h1 class="text-center">Candles</h1>
+                <p class="text-center mb-5">Browse our candles by mood to find the one that fits</p>
+
+                <div class="row g-4">
+                    <!-- Relax column -->
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2 class="h4">Relax</h2>
+                        <div class="card mb-4">
+                            <img src="assets/images/candle-driftwood-sage.jpg"
+                                alt="A lit candle in a green glazed jar on driftwood, beside a sprig of sage"
+                                class="card-img-top candle-image" loading="lazy">
+                            <div class="card-body">
+                                <p class="card-text mb-1">Scent: Driftwood & Sage</p>
+                                <p class="card-text mb-0">Size: 300g | Price: £12</p>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <img src="assets/images/candle-lavender-chamomile.jpg"
+                                alt="A lit candle in a lilac jar beside lavender sprigs and dried chamomile"
+                                class="card-img-top candle-image" loading="lazy">
+                            <div class="card-body">
+                                <p class="card-text mb-1">Scent: Lavender & Chamomile</p>
+                                <p class="card-text mb-0">Size: 200g | Price: £10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focus, Energise and Reminisce columns follow the same pattern -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / contact section-->
+    <!-- Added mt-auto into footer class to push footer to the bottom of the page -->
+    <footer id="contact" class="footer py-4 mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-8 text-center text-md-start">
+                    <h2 class="footer-heading h5">Contact</h2>
+                    <p class="mb-1">Email: <a href="mailto:SCH@sensations.co.uk">SCH@sensations.co.uk</a></p>
+                    <p class="mb-0">Phone: <a href="tel:+440000000000">01234 567890</a></p>
+                    <p class="mb-0">Phone lines open Monday to Friday, 8am to 4pm</p>
+                </div>
+                <div class="col-12 col-md-4 text-center text-md-end mt-3 mt-md-0">
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Sensations on Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Sensations on Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Sensations on X (formerly Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- Font Awesome kit -->
+    <script src="https://kit.fontawesome.com/cc5e93e4d5.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
