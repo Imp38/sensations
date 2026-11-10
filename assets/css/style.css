@@ -149,18 +149,22 @@ h3 {
 }
 
 /* Media Queries for Responsive Design */
+
+/* Large devices (small laptops, 992px and up) */
 @media (min-width: 992px) {
     .hero {
         height: 450px;
         background-position: center;
     }
-
     .footer .social-link {
         font-size: 2rem;
     }
-
     .intro-text {
         font-size: 1.75rem;
         line-height: 1.5;
+    }
+    /* Ensure candle cards have a minimum height for uniformity */
+    .candles .card-body {
+        min-height: 7rem;
     }
 }

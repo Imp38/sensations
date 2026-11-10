@@ -120,9 +120,16 @@ On small screens, the links collapse into a menu button, which opens to show the
 
 ### Bugs found and fixed
 
-| Bug | Cause | Fix | Evidence |
+Bugs found during development and testing, with the cause and fix for each. Click an evidence line to see the screenshots.
+
+| # | Bug | Cause | Fix |
 |---|---|---|---|
-| A stray underline appeared beside the Facebook and Instagram icons in the footer | Bootstrap's default link style (`text-decoration: underline`) underlined the space after each icon | Added `text-decoration: none` to the social link rules for normal, hover and focus states | See screenshots below |
+| 1 | A stray underline appeared beside the Facebook and Instagram icons in the footer | Bootstrap's default link style underlined the space after each icon | Added `text-decoration: none` to the social link rules for normal, hover and focus states |
+| 2 | Candle cards were different heights at some widths, so the second row did not line up | Longer scent names wrapped onto two lines in the narrower columns | Added a minimum height to the candle card bodies for screens 992px and wider |
+
+<details>
+<summary>Bug 1 evidence: stray underline</summary>
+
 **Before the fix:** a small line appears beside the first two icons.
 
 ![Footer social icons with a stray underline beside the Facebook and Instagram icons](assets/screenshots/bug-social-underline-before.png)
@@ -130,6 +137,25 @@ On small screens, the links collapse into a menu button, which opens to show the
 **Cause:** Bootstrap's `a` rule applies an underline to every link.
 
 ![Browser developer tools showing Bootstrap's link rule setting text-decoration to underline](assets/screenshots/bug-social-underline-devtools.png)
+
+</details>
+
+<details>
+<summary>Bug 2 evidence: uneven candle cards</summary>
+
+**Before the fix:** at 1159px wide, the top-row cards differ in height because longer scent names wrap onto two lines.
+
+![Candle cards of uneven height at 1159px](assets/screenshots/bug-candle-cards-before.png)
+
+**The fix:** a minimum height on the card bodies, inside the media query for screens 992px and wider.
+
+![CSS rule setting a minimum height on the candle card bodies](assets/screenshots/bug-candle-cards-fix.png)
+
+**After the fix:** every card in each row is the same height.
+
+![Candle cards level at 1159px after the fix](assets/screenshots/bug-candle-cards-after.png)
+
+</details>
 
 ### Known issues
 - The mobile menu stays open after tapping an in-page link such as Contact. A small script to close it is planned.
