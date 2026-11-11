@@ -164,6 +164,8 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
 - Hero, intro and mood card images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
+- Gallery photo: [black & white candles](https://unsplash.com/photos/black-and-white-candle-on-brown-wooden-holder-YasQvzPbGOQ) by Hanna Balan on Unsplash used under the [Unsplash License](https://unsplash.com/license)
+- Gallery photo of two hugging candles: [Two brown candles](https://unsplash.com/photos/two-brown-candles-ZDZzaTh8elk) by Dmitri Leychu on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
 - Fonts: [Lora](https://fonts.google.com/specimen/Lora) and [Nunito](https://fonts.google.com/specimen/Nunito) from Google Fonts.
 - Layout and components: [Bootstrap 5.3](https://getbootstrap.com/).
 - Icons: [Font Awesome](https://fontawesome.com/).
