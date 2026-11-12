@@ -20,6 +20,8 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
 - [Features](#features)
   - [Navigation](#navigation)
   - [Home page](#home-page)
+  - [Candles page](#candles-page)
+  - [Gallery page](#gallery-page)
 - [Testing](#testing)
   - [Bugs found and fixed](#bugs-found-and-fixed)
   - [Known issues](#known-issues)
@@ -116,6 +118,25 @@ On small screens, the links collapse into a menu button, which opens to show the
 - Four mood cards (Relax, Focus, Energise and Reminisce), shown two by two on phones and four across on larger screens.
 - A footer with contact details, phone opening hours and social links that open in a new tab.
 
+| Desktop | Mobile |
+|:---|:---|
+| <img src="assets/screenshots/home-desktop.jpg" width="650" align="top"> | <img src="assets/screenshots/home-mobile.jpg" width="220" align="top"> |
+
+### Candles page
+
+- Eight scented candles arranged in four mood columns (Relax, Focus, Energise and Reminisce), two in each.
+- Every candle shows its picture, scent, size and price.
+
+<img src="assets/screenshots/candles-desktop.jpg" alt="Candles page on a desktop screen" width="650">
+
+### Gallery page
+
+- A mosaic of eight pictures of past candle designs, laid out edge to edge.
+- There are no captions, so visitors can read their own mood into each design.
+- The layout steps down to a single column on phones.
+
+<img src="assets/screenshots/gallery-desktop.jpg" alt="Gallery page on a desktop screen, showing eight candle pictures in a mosaic" width="650">
+
 ## Testing
 
 ### Bugs found and fixed
@@ -166,6 +187,7 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 - Hero, intro and mood card images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
 - Gallery photo: [black & white candles](https://unsplash.com/photos/black-and-white-candle-on-brown-wooden-holder-YasQvzPbGOQ) by Hanna Balan on Unsplash used under the [Unsplash License](https://unsplash.com/license)
 - Gallery photo of two hugging candles: [Two brown candles](https://unsplash.com/photos/two-brown-candles-ZDZzaTh8elk) by Dmitri Leychu on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
+- Christmas tree candle: [A small red christmas tree](https://unsplash.com/photos/a-small-christmas-tree-made-out-of-folded-paper-ZhKdPOaC9yA) by Ionela Mat on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
 - Fonts: [Lora](https://fonts.google.com/specimen/Lora) and [Nunito](https://fonts.google.com/specimen/Nunito) from Google Fonts.
 - Layout and components: [Bootstrap 5.3](https://getbootstrap.com/).
 - Icons: [Font Awesome](https://fontawesome.com/).

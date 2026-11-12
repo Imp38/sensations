@@ -53,10 +53,8 @@ h3 {
 /* Main content */
 /* Gallery */
 .gallery-grid {
-    --gallery-gap: 0;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--gallery-gap);
 }
 
 .gallery-item {
