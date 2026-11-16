@@ -82,7 +82,8 @@
                             alt="A candle in a deep blue box with a burgundy bow, beside a framed portrait of an older woman and cream roses"
                             class="img-fluid" loading="lazy">
                         <p>In a deep-blue magnetic box. Choose your scent, shape, label and wrapping.</p>
-                        <p class="mb-0"><span class="badge text-bg-secondary">Coming soon</span> Voice-recording candles</p>
+                        <p class="mb-0"><span class="badge text-bg-secondary">Coming soon</span> Voice-recording candles
+                        </p>
                     </div>
                 </div>
                 <!-- Pricing -->
@@ -113,7 +114,39 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Enquiry form goes here -->
+                <!-- Enquiry form -->
+                <h2 class="h4">Enquire</h2>
+                <form action="success.html" method="get">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="form-label">Size</label>
+                        <select class="form-select" id="size" name="size" required>
+                            <option value="" selected disabled>Select a size</option>
+                            <option value="150">Small, 150g</option>
+                            <option value="200">Medium, 200g</option>
+                            <option value="300">Large, 300g</option>
+                            <option value="400">Extra large, 400g</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="occasion" class="form-label">Occasion</label>
+                        <select class="form-select" id="occasion" name="occasion" required>
+                            <option value="" selected disabled>Select an occasion</option>
+                            <option value="gift">Gift</option>
+                            <option value="memorial">Memorial</option>
+                            <option value="treat">Treat for myself</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-brown">Send enquiry</button>
+                </form>
             </div>
         </section>
     </main>
