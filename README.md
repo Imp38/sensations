@@ -1,7 +1,7 @@
 # Sensations
 
 ## About
-In this, my first development, I shall be utilisaing HTML, CSS and a minor amount of JS. 
+This is my first development, built with HTML CSS and Bootstrap.
 
 Sensations is a website for a custom candle business. It helps people find a candle that fits the moment, whether that is a chance to unwind after a stressful day, a thoughtful gift, or a way to feel closer to someone they miss.
 
