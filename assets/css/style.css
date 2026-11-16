@@ -116,6 +116,12 @@ h3 {
     object-fit: cover;
 }
 
+/* Custom orders */
+.custom h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
 /* Buttons */
 .btn-outline-brown {
     color: var(--highlight-color);
