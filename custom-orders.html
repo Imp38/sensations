@@ -117,34 +117,56 @@
                 <!-- Enquiry form -->
                 <h2 class="h4">Enquire</h2>
                 <form action="success.html" method="get">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="size" class="form-label">Size</label>
+                            <select class="form-select" id="size" name="size" required>
+                                <option value="" selected disabled>Select a size</option>
+                                <option value="150">Small, 150g</option>
+                                <option value="200">Medium, 200g</option>
+                                <option value="300">Large, 300g</option>
+                                <option value="400">Extra large, 400g</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="occasion" class="form-label">Occasion</label>
+                            <select class="form-select" id="occasion" name="occasion" required>
+                                <option value="" selected disabled>Select an occasion</option>
+                                <option value="gift">Gift</option>
+                                <option value="memorial">Memorial</option>
+                                <option value="treat">Treat for myself</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="size" class="form-label">Size</label>
-                        <select class="form-select" id="size" name="size" required>
-                            <option value="" selected disabled>Select a size</option>
-                            <option value="150">Small, 150g</option>
-                            <option value="200">Medium, 200g</option>
-                            <option value="300">Large, 300g</option>
-                            <option value="400">Extra large, 400g</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="scent" class="form-label">Scent ideas</label>
+                            <input type="text" class="form-control" id="scent" name="scent">
+                        </div>
+                        <div class="col-12 col-md-6 mb-3 d-flex align-items-end">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="crackle" name="crackle" value="yes">
+                                <label class="form-check-label" for="crackle">Crackle wick</label>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="occasion" class="form-label">Occasion</label>
-                        <select class="form-select" id="occasion" name="occasion" required>
-                            <option value="" selected disabled>Select an occasion</option>
-                            <option value="gift">Gift</option>
-                            <option value="memorial">Memorial</option>
-                            <option value="treat">Treat for myself</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4"></textarea>
                     </div>
+
                     <button type="submit" class="btn btn-outline-brown">Send enquiry</button>
                 </form>
             </div>
