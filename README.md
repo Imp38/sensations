@@ -1,7 +1,7 @@
 # Sensations
 
 ## About
-This is my first development, built with HTML CSS and Bootstrap.
+This is my first development, built with HTML, CSS, Bootstrap and a small amount of JS.
 
 Sensations is a website for a custom candle business. It helps people find a candle that fits the moment, whether that is a chance to unwind after a stressful day, a thoughtful gift, or a way to feel closer to someone they miss.
 
@@ -148,6 +148,7 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 | 1 | A stray underline appeared beside the Facebook and Instagram icons in the footer | Bootstrap's default link style underlined the space after each icon | Added `text-decoration: none` to the social link rules for normal, hover and focus states |
 | 2 | Candle cards were different heights at some widths, so the second row did not line up | Longer scent names wrapped onto two lines in the narrower columns | Added a minimum height to the candle card bodies for screens 992px and wider |
 | 3 | The pricing table was too narrow on phones, so the "Extra large, 400g" label wrapped onto two lines | A Bootstrap class (`w-50`) fixed the table at half width on every screen size | Removed the class, made the table full width by default, and set it to half width only from 768px upwards |
+| 4 | On small screens, the menu stayed open after tapping an in-page link such as Contact | Bootstrap only closes its mobile menu when its own toggle button is pressed, not when a link inside it is clicked | Added a small script that scrolls to the section and closes the menu when a link to the same page is tapped |
 
 <details>
 <summary>Bug 1 evidence: stray underline</summary>
@@ -200,8 +201,28 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 
 </details>
 
-### Known issues
-- The mobile menu stays open after tapping an in-page link such as Contact. A small script to close it is planned.
+<details>
+<summary>Bug 4 evidence: mobile menu stays open</summary>
+
+Links to other pages already worked, because the new page loads with the menu closed. Only links to a section on the same page, such as Contact, left the menu open.
+
+| Before the fix | After the fix |
+|---|---|
+| <img src="assets/screenshots/bug-menu-before.png" alt="Mobile menu left open after tapping Contact" width="200"> | <img src="assets/screenshots/bug-menu-after.png" alt="Mobile menu closed after tapping Contact" width="200"> |
+
+**Before the fix:** on a phone, tapping Contact scrolls to the footer, but the menu stays open, and Contact still shows its hover colour.
+
+**The fix, part 1:** a short JavaScript file listens for clicks on the menu links. When a link points to a section on the same page, it scrolls there smoothly and closes the menu.
+
+![script.js, which closes the menu when an in-page link is clicked](assets/screenshots/bug-menu-fix-script.png)
+
+**The fix, part 2:** the script is linked at the bottom of every page, after Bootstrap's own script.
+
+![The script tag with its comment at the bottom of a page](assets/screenshots/bug-menu-fix-link.png)
+
+**After the fix:** tapping Contact scrolls to the footer and the menu closes.
+
+</details>
 
 ## Credits
 
