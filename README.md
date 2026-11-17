@@ -147,6 +147,7 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 |---|---|---|---|
 | 1 | A stray underline appeared beside the Facebook and Instagram icons in the footer | Bootstrap's default link style underlined the space after each icon | Added `text-decoration: none` to the social link rules for normal, hover and focus states |
 | 2 | Candle cards were different heights at some widths, so the second row did not line up | Longer scent names wrapped onto two lines in the narrower columns | Added a minimum height to the candle card bodies for screens 992px and wider |
+| 3 | The pricing table was too narrow on phones, so the "Extra large, 400g" label wrapped onto two lines | A Bootstrap class (`w-50`) fixed the table at half width on every screen size | Removed the class, made the table full width by default, and set it to half width only from 768px upwards |
 
 <details>
 <summary>Bug 1 evidence: stray underline</summary>
@@ -175,6 +176,27 @@ Bugs found during development and testing, with the cause and fix for each. Clic
 **After the fix:** every card in each row is the same height.
 
 ![Candle cards level at 1159px after the fix](assets/screenshots/bug-candle-cards-after.png)
+
+</details>
+
+<details>
+<summary>Bug 3 evidence: pricing table on phones</summary>
+
+**Before the fix:** at 375px wide, the table is only half the width of the page, so "Extra large, 400g" wraps onto two lines.
+
+![Pricing table half width on a phone, with a wrapped label](assets/screenshots/bug-pricing-table-before.png)
+
+**The fix, part 1:** the table is set to full width by default, in the Custom orders section of the stylesheet.
+
+![CSS rule setting the pricing table to full width](assets/screenshots/bug-pricing-table-fix-base.png)
+
+**The fix, part 2:** a media query, inside the 768px block, sets it to half width on tablets and larger.
+
+![Media query setting the pricing table to half width from 768px upwards](assets/screenshots/bug-pricing-table-fix-media.png)
+
+**After the fix:** the table fills the width on a phone, and every label fits on one line.
+
+![Pricing table full width on a phone](assets/screenshots/bug-pricing-table-after.png)
 
 </details>
 
