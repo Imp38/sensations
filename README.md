@@ -22,6 +22,8 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Home page](#home-page)
   - [Candles page](#candles-page)
   - [Gallery page](#gallery-page)
+  - [Custom orders page](#custom-orders-page)
+  - [Success page](#success-page)
 - [Testing](#testing)
   - [Bugs found and fixed](#bugs-found-and-fixed)
   - [Known issues](#known-issues)
@@ -137,6 +139,25 @@ On small screens, the links collapse into a menu button, which opens to show the
 
 <img src="assets/screenshots/gallery-desktop.jpg" alt="Gallery page on a desktop screen, showing eight candle pictures in a mosaic" width="650">
 
+### Custom orders page
+
+- Two ways to order a custom candle: gift candles and memorial candles, each with a picture showing wrapping and personalisation options.
+- A "coming soon" note for a future voice-recording candle.
+- A pricing table with four sizes (150g, 200g, 300g and 400g), shown full width on phones and half width on larger screens.
+- An enquiry form with name, email, size, occasion and scent ideas as required fields, an optional crackle wick tick box and an optional message. The fields sit side by side on larger screens and stack on phones.
+- The form checks the input in the browser before it is sent, and shows the confirmation page once it is complete.
+- The form differs from the wireframe, with it not sitting beside the pricing, this is due to the form being too crampt. Placing it below allows for more space and a more professional look.
+
+<img src="assets/screenshots/custom-orders-desktop.jpg" alt="Custom orders page on a desktop screen" width="650">
+
+### Success page
+
+- A confirmation message thanking the visitor, with a button back to the Home page.
+- The message sits in the middle of the page between the navigation bar and the footer.
+- The page is not in the navigation menu. Visitors reach it by sending the Custom orders enquiry form.
+
+<img src="assets/screenshots/success-desktop.jpg" alt="Success page on a desktop screen" width="650">
+
 ## Testing
 
 ### Bugs found and fixed
@@ -227,7 +248,7 @@ Links to other pages already worked, because the new page loads with the menu cl
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
-- Hero, intro and mood card images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
+- Hero, intro, mood card, candle, custom order and some gallery images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
 - Gallery photo: [black & white candles](https://unsplash.com/photos/black-and-white-candle-on-brown-wooden-holder-YasQvzPbGOQ) by Hanna Balan on Unsplash used under the [Unsplash License](https://unsplash.com/license)
 - Gallery photo of two hugging candles: [Two brown candles](https://unsplash.com/photos/two-brown-candles-ZDZzaTh8elk) by Dmitri Leychu on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
 - Christmas tree candle: [A small red christmas tree](https://unsplash.com/photos/a-small-christmas-tree-made-out-of-folded-paper-ZhKdPOaC9yA) by Ionela Mat on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
