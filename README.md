@@ -245,6 +245,43 @@ Links to other pages already worked, because the new page loads with the menu cl
 
 </details>
 
+### Code validation
+
+#### HTML
+
+Each page was checked with the [W3C Nu HTML Checker](https://validator.w3.org/nu/) by pasting in its code. All five pages pass with no errors or warnings.
+
+| Page | Result |
+|---|---|
+| index.html | Pass, after one fix (see below) |
+| candles.html | Pass |
+| gallery.html | Pass |
+| custom-orders.html | Pass |
+| success.html | Pass |
+
+**Issue found on the Home page:** the validator reported an error and a warning. The hero was a `<section>` with `role="img"`, which is not allowed on that element, and the intro was a `<section>` without a heading. Both were changed to `<div>` elements, and the page then passed.
+
+<details>
+<summary>HTML validator evidence</summary>
+
+**Home page, before the fix:**
+
+![Validator report showing one error and one warning for index.html](assets/screenshots/validator-html-index-before.png)
+
+**Home page, after the fix:**
+
+![Validator report for index.html with no errors or warnings](assets/screenshots/validator-html-index.png)
+
+**Candles:** ![Validator report for candles.html with no errors or warnings](assets/screenshots/validator-html-candles.png)
+
+**Gallery:** ![Validator report for gallery.html with no errors or warnings](assets/screenshots/validator-html-gallery.png)
+
+**Custom orders:** ![Validator report for custom-orders.html with no errors or warnings](assets/screenshots/validator-html-custom-orders.png)
+
+**Success:** ![Validator report for success.html with no errors or warnings](assets/screenshots/validator-html-success.png)
+
+</details>
+
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
