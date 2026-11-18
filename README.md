@@ -282,6 +282,33 @@ Each page was checked with the [W3C Nu HTML Checker](https://validator.w3.org/nu
 
 </details>
 
+#### CSS
+
+The stylesheet was checked with the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) using the CSS level 3 + SVG profile. It passes with no errors.
+
+**Issue found:** `max-width: auto` in the `.intro-image` rule is not a valid value. It was replaced with `max-width: 100%`, and an unnecessary `width: auto` was removed.
+
+The validator shows five warnings. They are expected: it cannot check the Google Fonts `@import` in direct input mode, and it does not statically check CSS variables.
+
+<details>
+<summary>CSS validator evidence</summary>
+
+**Before the fix:** one error was reported for `.intro-image`.
+
+![CSS validator report showing one error](assets/screenshots/validator-css-before.png)
+
+**The rule before and after:**
+
+![The .intro-image rule containing the invalid max-width: auto](assets/screenshots/css-fix-before.png)
+
+![The .intro-image rule with max-width set to 100%](assets/screenshots/css-fix-after.png)
+
+**After the fix:** the stylesheet validates.
+
+![CSS validator report with no errors](assets/screenshots/validator-css.png)
+
+</details>
+
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
