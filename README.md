@@ -26,6 +26,15 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Success page](#success-page)
 - [Testing](#testing)
   - [Bugs found and fixed](#bugs-found-and-fixed)
+  - [Code validation](#code-validation)
+    - [HTML](#html)
+    - [CSS](#css)
+  - [Performance Testing](#performance-testing)
+    - [Results summary](#results-summary)
+    - [What I changed and what I learned](#what-i-changed-and-what-i-learned)
+    - [Final results](#final-results-3-runs-home-page)
+    - [Lighthouse screenshots](#lighthouse-screenshots)
+    - [Known limitations](#known-limitations)
 - [Credits](#credits)
 
 ## UX
@@ -307,6 +316,120 @@ The validator shows five warnings. They are expected: it cannot check the Google
 ![CSS validator report with no errors](assets/screenshots/validator-css.png)
 
 </details>
+
+## Performance Testing
+
+Performance was tested with Lighthouse in Chrome DevTools on the live Home page (`https://imp38.github.io/sensations/index.html`), in an Incognito window, using the **mobile** preset (Moto G Power, slow 4G). Lighthouse results vary from run to run, so each stage was run **three times** and the **median** is reported.
+
+### Results summary
+
+| Stage | Performance | FCP | LCP | CLS |
+|---|---|---|---|---|
+| 1. Baseline (original images, lazy loading) | 78 | 1.7 s | 5.0 s | 0.052 |
+| 2. Images compressed, lazy loading removed | 70 | 3.0 s | 8.1 s | 0.052 |
+| 3. Width and height added to images | 70 | 2.9 s | 7.9 s | 0.052 |
+| 4. Images converted to WebP | 72 | 2.8 s | 7.9 s | 0.006 |
+| 5. WebP recompressed + hero image preloaded | 68 | 2.9 s | 7.0 s | 0.143 |
+| 6. Lazy loading restored + Google Fonts preconnect | **76** | **2.9 s** | **5.1 s** | **0.006** |
+
+Accessibility scored **100** and Best Practices **96** at every stage. Total Blocking Time was 0 ms throughout.
+
+### What I changed and what I learned
+
+1. **Baseline:** the images were uncompressed, with `loading="lazy"` on the images below the fold.
+2. **Compression:** I compressed the images and removed `loading="lazy"`, assuming it wasn't needed. The score **dropped** and LCP rose from 5.0 s to 8.1 s. Without lazy loading, every image downloaded at once and competed with the hero image.
+3. **Width and height:** added to the images so the browser can reserve space before they load. This is meant to reduce layout shift. The mood card images also needed `height: auto` in the CSS, otherwise the height attribute stretched them.
+4. **WebP:** converted the hero and mood images to WebP. The files were the same size at first, so I recompressed them with TinyJPG (about 14% smaller).
+5. **Hero preload:** Lighthouse showed that the hero image (a CSS background) was found late. Adding `<link rel="preload" ... fetchpriority="high">` fixed the "LCP request discovery" warning. The "Layout shift culprits" panel showed the remaining CLS came from the Google Fonts loading late.
+6. **Final changes:** I restored `loading="lazy"` on the four mood card images only (below the fold) and added `preconnect` links for Google Fonts. LCP returned to about 5 s and CLS to 0.006.
+
+### Final results (3 runs, Home page)
+
+| | Run 1 | Run 2 | Run 3 | Median |
+|---|---|---|---|---|
+| Performance | 70 | 76 | 80 | **76** |
+| FCP | 2.9 s | 2.9 s | 2.9 s | **2.9 s** |
+| LCP | 5.3 s | 5.1 s | 4.3 s | **5.1 s** |
+| CLS | 0.143 | 0.006 | 0.006 | **0.006** |
+
+The final median (76) is level with the baseline (78) once run-to-run variation is taken into account: the three baseline runs alone ranged from 77 to 86. The measurable gains are the more stable layout (CLS) and the much smaller image files.
+
+### Lighthouse screenshots
+
+<details>
+<summary>Stage 1 (baseline): runs of 77, 86 and 78</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 1 run 1](assets/screenshots/lighthouse/stage1-run1.png) | ![Stage 1 run 2](assets/screenshots/lighthouse/stage1-run2.png) | ![Stage 1 run 3](assets/screenshots/lighthouse/stage1-run3.png) |
+
+</details>
+
+<details>
+<summary>Stage 2 (compressed, no lazy loading): runs of 71, 61 and 70</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 2 run 1](assets/screenshots/lighthouse/stage2-run1.png) | ![Stage 2 run 2](assets/screenshots/lighthouse/stage2-run2.png) | ![Stage 2 run 3](assets/screenshots/lighthouse/stage2-run3.png) |
+
+</details>
+
+<details>
+<summary>Stage 3 (width and height): runs of 70, 71 and 66</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 3 run 1](assets/screenshots/lighthouse/stage3-run1.png) | ![Stage 3 run 2](assets/screenshots/lighthouse/stage3-run2.png) | ![Stage 3 run 3](assets/screenshots/lighthouse/stage3-run3.png) |
+
+</details>
+
+<details>
+<summary>Stage 4 (WebP): runs of 72, 71 and 74</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 4 run 1](assets/screenshots/lighthouse/stage4-run1.png) | ![Stage 4 run 2](assets/screenshots/lighthouse/stage4-run2.png) | ![Stage 4 run 3](assets/screenshots/lighthouse/stage4-run3.png) |
+
+Evidence for the recompression step:
+
+![Image delivery panel, WebP files not smaller](assets/screenshots/lighthouse/stage4-image-delivery.png)
+![TinyJPG results](assets/screenshots/lighthouse/stage4-tinyjpg.png)
+
+</details>
+
+<details>
+<summary>Stage 5 (hero preload): runs of 71, 65 and 68</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 5 run 1](assets/screenshots/lighthouse/stage5-run1.png) | ![Stage 5 run 2](assets/screenshots/lighthouse/stage5-run2.png) | ![Stage 5 run 3](assets/screenshots/lighthouse/stage5-run3.png) |
+
+Why the preload was added, and the line itself:
+
+![LCP request discovery warnings](assets/screenshots/lighthouse/stage5-lcp-discovery.png)
+![Preload link in the head](assets/screenshots/lighthouse/stage5-preload-code.png)
+
+</details>
+
+<details>
+<summary>Stage 6 (final): runs of 70, 76 and 80</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Stage 6 run 1](assets/screenshots/lighthouse/stage6-run1.png) | ![Stage 6 run 2](assets/screenshots/lighthouse/stage6-run2.png) | ![Stage 6 run 3](assets/screenshots/lighthouse/stage6-run3.png) |
+
+LCP breakdown from run 3 (score 80): the hero image starts loading almost immediately (20 ms resource load delay), so the preload is working. The "LCP request discovery" warning no longer applies.
+
+![LCP breakdown, run 3](assets/screenshots/lighthouse/stage6-lcp-breakdown.png)
+
+</details>
+
+### Known limitations
+
+- **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. Replacing it with `<link>` tags in each page's `<head>` would be the next improvement.
+- **Image sizes:** the mood card images are larger than their displayed size. I kept the original pictures rather than cropping them.
+- **Cache lifetimes:** Lighthouse suggests longer caching, but GitHub Pages does not allow the cache headers to be changed.
+- **Run-to-run variation:** scores differed by up to about 10 points between identical runs, so small differences between stages should not be over-interpreted.
 
 ## Credits
 
