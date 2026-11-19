@@ -103,6 +103,7 @@ h3 {
 .mood-image {
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    height: auto;
 }
 
 .mood-card {
