@@ -26,7 +26,6 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Success page](#success-page)
 - [Testing](#testing)
   - [Bugs found and fixed](#bugs-found-and-fixed)
-  - [Known issues](#known-issues)
 - [Credits](#credits)
 
 ## UX
