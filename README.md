@@ -35,6 +35,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Candles page performance](#candles-page-performance)
     - [Gallery page performance](#gallery-page-performance)
     - [Custom orders page performance](#custom-orders-page-performance)
+    - [Success page performance](#success-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
 - [Credits](#credits)
 
@@ -330,6 +331,7 @@ Performance was tested with Lighthouse in Chrome DevTools on the live pages (`ht
 | Candles | 71 | 78 | 7.1 s | 4.7 s |
 | Gallery | 70 | 79 | 7.6 s | 3.4 s |
 | Custom orders | 81 | 82 | 4.2 s | 3.9 s |
+| Success | 90 | 90 | 2.9 s | 2.9 s |
 
 Accessibility scored **100** and Best Practices **96** on every run so far. Total Blocking Time was 0 ms throughout.
 
@@ -679,12 +681,55 @@ Improve image delivery from the third run (132 KiB estimated savings, all from t
 
 </details>
 
+#### Success page performance
+
+| Stage | Change | Performance | FCP | LCP | CLS |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Baseline (no changes needed) | 90 | 2.9 s | 2.9 s | 0.016 |
+
+Median of three mobile runs on the live site. Total Blocking Time was 0 ms in every run, Accessibility was 100 and Best Practices was 96.
+
+**What I changed**
+
+- Nothing. The page already scored 90 at baseline and has the least content of any page (text only, no images), so the image fixes used on the other pages do not apply. The only items Lighthouse flagged are the render-blocking stylesheets shared by every page (see Performance testing limitations), so I tested the baseline only.
+
+**Notes**
+
+- The largest content on this page is text, so LCP matches FCP (2.9 s).
+- One run had a faster FCP (2.4 s) than the other two (2.9 s). I have kept it in the results, and the median is not affected by it.
+- Lighthouse lists three render-blocking requests: the Google Fonts stylesheet (770 ms), the Bootstrap CSS from jsDelivr (900 ms) and my own `style.css` (1.7 KiB). It estimates potential savings of 2,060 ms, which is not part of the score. These stylesheets are what style the page, so I kept them as they are, as on the other pages (see Performance testing limitations).
+
+<details>
+<summary>Stage 1 screenshots (baseline)</summary>
+
+Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 0.018, 0.016.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Success stage 1 run 1](assets/screenshots/lighthouse/success-stage1-run1.png) | ![Success stage 1 run 2](assets/screenshots/lighthouse/success-stage1-run2.png) | ![Success stage 1 run 3](assets/screenshots/lighthouse/success-stage1-run3.png) |
+
+</details>
+
 #### Performance testing limitations
 
 - **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (on the Home page CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. Replacing it with `<link>` tags in each page's `<head>` would be the next improvement.
 - **Cache lifetimes:** Lighthouse suggests longer caching, but GitHub Pages does not allow the cache headers to be changed.
-- **Image sizes:** several images are larger than their displayed size. I kept the original pictures rather than cropping or resizing them.
-- **Run-to-run variation:** scores differed by up to about 10 points between identical runs, so small differences between stages should not be over-interpreted.
+- **Image sizes:** Lighthouse flags several images as larger than their displayed size, because it tests at a phone-sized viewport where they appear about 388 px wide (on the Gallery and Custom orders pages). I kept the images at their original dimensions instead of resizing them, for two reasons:
+  - **Sharpness:** when I resized the largest Gallery image to 388 px, the file dropped from 1.83 MB to 17.0 kB, but it looked visibly soft when zoomed in. Visitors to a gallery are likely to zoom in to judge the quality of the candles, and phones with high-density screens need roughly twice the displayed width to look sharp.
+  - **Larger screens:** the same images are shown larger on tablets and desktops, so a file sized for a phone would look blurry there.
+
+  I reduced the file sizes with WebP conversion and compression instead, and accepted that Lighthouse still reports potential savings, for example about 829 KiB on the Gallery and 132 KiB on Custom orders. 
+
+- **Run-to-run variation:** results differ between identical runs because conditions are never exactly the same: the quality of my broadband connection at the time, how quickly GitHub Pages and the CDNs (jsDelivr and Google Fonts) respond, and how busy my computer is. A single run can therefore be unusually fast or slow, so I ran each stage three times and report the median, which stops one unusual run from deciding the result. Three runs also gives a clear middle value without making the testing take too long. Every individual run is shown in the screenshots, and small differences between stages should not be over-interpreted.
+
+- **Render-blocking stylesheets:** every page loads the same three stylesheets in its `<head>`: Bootstrap CSS from jsDelivr, the Google Fonts CSS and my own `style.css`. Lighthouse lists them as render-blocking, with an estimated 2,060 ms of potential savings. That figure is an estimate and is not part of the score. They style the whole site, so I left them in place. This is also why FCP stays at around 3 s across the pages.
+
+<details>
+<summary>Render-blocking requests (Lighthouse, captured on the Success page)</summary>
+
+![Lighthouse render-blocking requests](assets/screenshots/lighthouse/render-blocking-requests.png)
+
+</details>
 
 ## Credits
 
