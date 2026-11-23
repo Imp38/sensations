@@ -30,11 +30,10 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [HTML](#html)
     - [CSS](#css)
   - [Performance Testing](#performance-testing)
-    - [Results summary](#results-summary)
-    - [What I changed and what I learned](#what-i-changed-and-what-i-learned)
-    - [Final results](#final-results-3-runs-home-page)
-    - [Lighthouse screenshots](#lighthouse-screenshots)
-    - [Known limitations](#known-limitations)
+    - [Summary across pages](#summary-across-pages)
+    - [Home page performance](#home-page-performance)
+    - [Candles page performance](#candles-page-performance)
+    - [Performance testing limitations](#performance-testing-limitations)
 - [Credits](#credits)
 
 ## UX
@@ -317,11 +316,22 @@ The validator shows five warnings. They are expected: it cannot check the Google
 
 </details>
 
-## Performance Testing
+### Performance Testing
 
-Performance was tested with Lighthouse in Chrome DevTools on the live Home page (`https://imp38.github.io/sensations/index.html`), in an Incognito window, using the **mobile** preset (Moto G Power, slow 4G). Lighthouse results vary from run to run, so each stage was run **three times** and the **median** is reported.
+Performance was tested with Lighthouse in Chrome DevTools on the live pages (`https://imp38.github.io/sensations/`), in an Incognito window, using the **mobile** preset (Moto G Power, slow 4G). Lighthouse results vary from run to run, so each stage was run **three times** and the **median** is reported. Each page has its own section below, in the same layout: a results table, what I changed and why, notes, and the screenshots.
 
-### Results summary
+#### Summary across pages
+
+| Page | Baseline score | Final score | Baseline LCP | Final LCP |
+|---|---|---|---|---|
+| Home | 78 | 76 | 5.0 s | 5.1 s |
+| Candles | 71 | 78 | 7.1 s | 4.7 s |
+
+Accessibility scored **100** and Best Practices **96** on every run so far. Total Blocking Time was 0 ms throughout.
+
+#### Home page performance
+
+**Results (median of three runs)**
 
 | Stage | Performance | FCP | LCP | CLS |
 |---|---|---|---|---|
@@ -332,36 +342,27 @@ Performance was tested with Lighthouse in Chrome DevTools on the live Home page 
 | 5. WebP recompressed + hero image preloaded | 68 | 2.9 s | 7.0 s | 0.143 |
 | 6. Lazy loading restored + Google Fonts preconnect | **76** | **2.9 s** | **5.1 s** | **0.006** |
 
-Accessibility scored **100** and Best Practices **96** at every stage. Total Blocking Time was 0 ms throughout.
-
-### What I changed and what I learned
+**What I changed**
 
 1. **Baseline:** the images were uncompressed, with `loading="lazy"` on the images below the fold.
 2. **Compression:** I compressed the images and removed `loading="lazy"`, assuming it wasn't needed. The score **dropped** and LCP rose from 5.0 s to 8.1 s. Without lazy loading, every image downloaded at once and competed with the hero image.
-3. **Width and height:** added to the images so the browser can reserve space before they load. This is meant to reduce layout shift. The mood card images also needed `height: auto` in the CSS, otherwise the height attribute stretched them.
+3. **Width and height:** added to the images so the browser can reserve space before they load. The mood card images also needed `height: auto` in the CSS, otherwise the height attribute stretched them.
 4. **WebP:** converted the hero and mood images to WebP. The files were the same size at first, so I recompressed them with TinyJPG (about 14% smaller).
 5. **Hero preload:** Lighthouse showed that the hero image (a CSS background) was found late. Adding `<link rel="preload" ... fetchpriority="high">` fixed the "LCP request discovery" warning. The "Layout shift culprits" panel showed the remaining CLS came from the Google Fonts loading late.
 6. **Final changes:** I restored `loading="lazy"` on the four mood card images only (below the fold) and added `preconnect` links for Google Fonts. LCP returned to about 5 s and CLS to 0.006.
 
-### Final results (3 runs, Home page)
-
-| | Run 1 | Run 2 | Run 3 | Median |
-|---|---|---|---|---|
-| Performance | 70 | 76 | 80 | **76** |
-| FCP | 2.9 s | 2.9 s | 2.9 s | **2.9 s** |
-| LCP | 5.3 s | 5.1 s | 4.3 s | **5.1 s** |
-| CLS | 0.143 | 0.006 | 0.006 | **0.006** |
+**Notes**
 
 The final median (76) is level with the baseline (78) once run-to-run variation is taken into account: the three baseline runs alone ranged from 77 to 86. The measurable gains are the more stable layout (CLS) and the much smaller image files.
 
-### Lighthouse screenshots
+**Screenshots**
 
 <details>
 <summary>Stage 1 (baseline): runs of 77, 86 and 78</summary>
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 1 run 1](assets/screenshots/lighthouse/stage1-run1.png) | ![Stage 1 run 2](assets/screenshots/lighthouse/stage1-run2.png) | ![Stage 1 run 3](assets/screenshots/lighthouse/stage1-run3.png) |
+| ![Home stage 1 run 1](assets/screenshots/lighthouse/home-stage1-run1.png) | ![Home stage 1 run 2](assets/screenshots/lighthouse/home-stage1-run2.png) | ![Home stage 1 run 3](assets/screenshots/lighthouse/home-stage1-run3.png) |
 
 </details>
 
@@ -370,7 +371,7 @@ The final median (76) is level with the baseline (78) once run-to-run variation 
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 2 run 1](assets/screenshots/lighthouse/stage2-run1.png) | ![Stage 2 run 2](assets/screenshots/lighthouse/stage2-run2.png) | ![Stage 2 run 3](assets/screenshots/lighthouse/stage2-run3.png) |
+| ![Home stage 2 run 1](assets/screenshots/lighthouse/home-stage2-run1.png) | ![Home stage 2 run 2](assets/screenshots/lighthouse/home-stage2-run2.png) | ![Home stage 2 run 3](assets/screenshots/lighthouse/home-stage2-run3.png) |
 
 </details>
 
@@ -379,7 +380,7 @@ The final median (76) is level with the baseline (78) once run-to-run variation 
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 3 run 1](assets/screenshots/lighthouse/stage3-run1.png) | ![Stage 3 run 2](assets/screenshots/lighthouse/stage3-run2.png) | ![Stage 3 run 3](assets/screenshots/lighthouse/stage3-run3.png) |
+| ![Home stage 3 run 1](assets/screenshots/lighthouse/home-stage3-run1.png) | ![Home stage 3 run 2](assets/screenshots/lighthouse/home-stage3-run2.png) | ![Home stage 3 run 3](assets/screenshots/lighthouse/home-stage3-run3.png) |
 
 </details>
 
@@ -388,12 +389,12 @@ The final median (76) is level with the baseline (78) once run-to-run variation 
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 4 run 1](assets/screenshots/lighthouse/stage4-run1.png) | ![Stage 4 run 2](assets/screenshots/lighthouse/stage4-run2.png) | ![Stage 4 run 3](assets/screenshots/lighthouse/stage4-run3.png) |
+| ![Home stage 4 run 1](assets/screenshots/lighthouse/home-stage4-run1.png) | ![Home stage 4 run 2](assets/screenshots/lighthouse/home-stage4-run2.png) | ![Home stage 4 run 3](assets/screenshots/lighthouse/home-stage4-run3.png) |
 
 Evidence for the recompression step:
 
-![Image delivery panel, WebP files not smaller](assets/screenshots/lighthouse/stage4-image-delivery.png)
-![TinyJPG results](assets/screenshots/lighthouse/stage4-tinyjpg.png)
+![Image delivery panel, WebP files not smaller](assets/screenshots/lighthouse/home-stage4-image-delivery.png)
+![TinyJPG results](assets/screenshots/lighthouse/home-stage4-tinyjpg.png)
 
 </details>
 
@@ -402,12 +403,12 @@ Evidence for the recompression step:
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 5 run 1](assets/screenshots/lighthouse/stage5-run1.png) | ![Stage 5 run 2](assets/screenshots/lighthouse/stage5-run2.png) | ![Stage 5 run 3](assets/screenshots/lighthouse/stage5-run3.png) |
+| ![Home stage 5 run 1](assets/screenshots/lighthouse/home-stage5-run1.png) | ![Home stage 5 run 2](assets/screenshots/lighthouse/home-stage5-run2.png) | ![Home stage 5 run 3](assets/screenshots/lighthouse/home-stage5-run3.png) |
 
 Why the preload was added, and the line itself:
 
-![LCP request discovery warnings](assets/screenshots/lighthouse/stage5-lcp-discovery.png)
-![Preload link in the head](assets/screenshots/lighthouse/stage5-preload-code.png)
+![LCP request discovery warnings](assets/screenshots/lighthouse/home-stage5-lcp-discovery.png)
+![Preload link in the head](assets/screenshots/lighthouse/home-stage5-preload-code.png)
 
 </details>
 
@@ -416,19 +417,83 @@ Why the preload was added, and the line itself:
 
 | Run 1 | Run 2 | Run 3 |
 |---|---|---|
-| ![Stage 6 run 1](assets/screenshots/lighthouse/stage6-run1.png) | ![Stage 6 run 2](assets/screenshots/lighthouse/stage6-run2.png) | ![Stage 6 run 3](assets/screenshots/lighthouse/stage6-run3.png) |
+| ![Home stage 6 run 1](assets/screenshots/lighthouse/home-stage6-run1.png) | ![Home stage 6 run 2](assets/screenshots/lighthouse/home-stage6-run2.png) | ![Home stage 6 run 3](assets/screenshots/lighthouse/home-stage6-run3.png) |
 
-LCP breakdown from run 3 (score 80): the hero image starts loading almost immediately (20 ms resource load delay), so the preload is working. The "LCP request discovery" warning no longer applies.
+LCP breakdown from run 3 (score 80): the hero image starts loading almost immediately (20 ms resource load delay), so the preload is working.
 
-![LCP breakdown, run 3](assets/screenshots/lighthouse/stage6-lcp-breakdown.png)
+![Home LCP breakdown, run 3](assets/screenshots/lighthouse/home-stage6-lcp-breakdown.png)
 
 </details>
 
-### Known limitations
+#### Candles page performance
 
-- **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. Replacing it with `<link>` tags in each page's `<head>` would be the next improvement.
-- **Image sizes:** the mood card images are larger than their displayed size. I kept the original pictures rather than cropping them.
+**Results (median of three runs)**
+
+| Stage | Performance | FCP | LCP | CLS |
+|---|---|---|---|---|
+| 1. Baseline (JPG images, no lazy loading) | 71 | 2.9 s | 7.1 s | 0.006 |
+| 2. `fetchpriority="high"` on the LCP image + lazy loading below the fold | **80** | 2.9 s | **4.3 s** | 0.008 |
+| 3. Images converted to WebP and compressed | 78 | 3.0 s | 4.7 s | 0.008 |
+
+**What I changed**
+
+1. **Baseline:** Lighthouse reported that the LCP image (a candle card) had no `fetchpriority`, and that the eight JPG images totalled 1,053 KiB.
+2. **Priority and lazy loading:** I added `fetchpriority="high"` to the LCP image and `loading="lazy"` to the cards below the first two. LCP dropped from 7.1 s to 4.3 s and the score rose by 9 points, because the below-the-fold images no longer compete with the first ones.
+3. **WebP and compression:** I converted the eight images to WebP with CloudConvert, then compressed them with TinyJPG. Conversion alone barely changed the file sizes; the compression did the saving. Image weight halved, from 1,053 KiB to 532 KiB.
+
+**Notes**
+
+The score stayed about the same after the WebP stage (78 against 80, within normal run-to-run variation). With the lower images already lazy-loaded, the remaining delay comes from render-blocking CSS and fonts, not image size. The smaller files still mean less data for visitors on slow connections. Width and height attributes were not added to the candle images, because CLS was already 0.006 to 0.008. Lighthouse still notes that the images (1408 × 768) are larger than their displayed size (386 × 211); I kept the original pictures rather than cropping them.
+
+**Screenshots**
+
+<details>
+<summary>Stage 1 (baseline): runs of 71, 71 and 71</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Candles stage 1 run 1](assets/screenshots/lighthouse/candles-stage1-run1.png) | ![Candles stage 1 run 2](assets/screenshots/lighthouse/candles-stage1-run2.png) | ![Candles stage 1 run 3](assets/screenshots/lighthouse/candles-stage1-run3.png) |
+
+What Lighthouse reported:
+
+![Image delivery, JPG images](assets/screenshots/lighthouse/candles-stage1-image-delivery.png)
+![LCP request discovery, fetchpriority missing](assets/screenshots/lighthouse/candles-stage1-lcp-discovery.png)
+
+</details>
+
+<details>
+<summary>Stage 2 (fetchpriority and lazy loading): runs of 85, 80 and 80</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Candles stage 2 run 1](assets/screenshots/lighthouse/candles-stage2-run1.png) | ![Candles stage 2 run 2](assets/screenshots/lighthouse/candles-stage2-run2.png) | ![Candles stage 2 run 3](assets/screenshots/lighthouse/candles-stage2-run3.png) |
+
+LCP breakdown after the change: the LCP image starts loading within 20 ms.
+
+![Candles LCP breakdown](assets/screenshots/lighthouse/candles-stage2-lcp-breakdown.png)
+
+</details>
+
+<details>
+<summary>Stage 3 (WebP and compression): runs of 78, 84 and 78</summary>
+
+| Run 1 | Run 2 | Run 3 |
+|---|---|---|
+| ![Candles stage 3 run 1](assets/screenshots/lighthouse/candles-stage3-run1.png) | ![Candles stage 3 run 2](assets/screenshots/lighthouse/candles-stage3-run2.png) | ![Candles stage 3 run 3](assets/screenshots/lighthouse/candles-stage3-run3.png) |
+
+Conversion and compression, and the image weight afterwards (532 KiB):
+
+![CloudConvert results](assets/screenshots/lighthouse/candles-stage3-cloudconvert.png)
+![TinyJPG results](assets/screenshots/lighthouse/candles-stage3-tinyjpg.png)
+![Image delivery, WebP images](assets/screenshots/lighthouse/candles-stage3-image-delivery.png)
+
+</details>
+
+#### Performance testing limitations
+
+- **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (on the Home page CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. Replacing it with `<link>` tags in each page's `<head>` would be the next improvement.
 - **Cache lifetimes:** Lighthouse suggests longer caching, but GitHub Pages does not allow the cache headers to be changed.
+- **Image sizes:** several images are larger than their displayed size. I kept the original pictures rather than cropping or resizing them.
 - **Run-to-run variation:** scores differed by up to about 10 points between identical runs, so small differences between stages should not be over-interpreted.
 
 ## Credits
