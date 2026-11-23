@@ -33,6 +33,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Summary across pages](#summary-across-pages)
     - [Home page performance](#home-page-performance)
     - [Candles page performance](#candles-page-performance)
+    - [Gallery page performance](#gallery-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
 - [Credits](#credits)
 
@@ -326,6 +327,7 @@ Performance was tested with Lighthouse in Chrome DevTools on the live pages (`ht
 |---|---|---|---|---|
 | Home | 78 | 76 | 5.0 s | 5.1 s |
 | Candles | 71 | 78 | 7.1 s | 4.7 s |
+| Gallery | 70 | 79 | 7.6 s | 3.4 s |
 
 Accessibility scored **100** and Best Practices **96** on every run so far. Total Blocking Time was 0 ms throughout.
 
@@ -486,6 +488,108 @@ Conversion and compression, and the image weight afterwards (532 KiB):
 ![CloudConvert results](assets/screenshots/lighthouse/candles-stage3-cloudconvert.png)
 ![TinyJPG results](assets/screenshots/lighthouse/candles-stage3-tinyjpg.png)
 ![Image delivery, WebP images](assets/screenshots/lighthouse/candles-stage3-image-delivery.png)
+
+</details>
+
+#### Gallery page performance
+
+| Stage | Change | Performance | FCP | LCP | CLS |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Baseline | 70 | 3.0 s | 7.6 s | 0.006 |
+| 2 | `fetchpriority="high"` on the LCP image, lazy loading below the fold | 83 | 3.0 s | 3.9 s | 0.006 |
+| 3 | Images converted to WebP and compressed | 79 | 3.0 s | 3.4 s | 0.13 |
+
+Median of three mobile runs per stage on the live site. Total Blocking Time was 0 ms in every run, and Accessibility (100) and Best Practices (96) did not change.
+
+**What I changed**
+
+- **Stage 2:** added `fetchpriority="high"` to the carved mandala candle, which Lighthouse identified as the LCP image. The first two images load normally and the other six have `loading="lazy"`.
+- **Stage 3:** converted all eight images to WebP with Squoosh (quality 75-80). Six of them were then compressed further with TinyJPG. TinyJPG made `gallery-hugging-candles` and `gallery-ceramic-pots` visibly worse, so I redid those two from the originals with Squoosh only. CloudConvert's free limit ran out, so I used Squoosh for this page.
+
+**Notes**
+
+- LCP improved from 7.6 s to 3.4 s. Most of that came from Stage 2 (7.6 s to 3.9 s).
+- The score fell from 83 to 79 at Stage 3 even though LCP improved, because the median CLS rose from 0.006 to 0.13. The three runs gave 0.13, 0.263 and 0.007, and a fourth run gave 0 (score 85, LCP 3.6 s). The same code produced very different layout shift, so I cannot say Stage 3 caused it.
+- The layout shift panel from the 0.007 run lists `main` shifting when three web fonts load. I did not capture a panel from a high-CLS run, so the cause of the larger shifts is unconfirmed. It may be the same font loading (see Performance testing limitations).
+- In the LCP breakdown for the mandala candle, element render delay (220 ms) was the largest part, ahead of resource load duration (110 ms).
+- FCP stayed at 2.9-3.0 s in every run on every stage, as on the other pages.
+- Lighthouse still reports about 829 KiB of possible image savings. The heaviest files are `gallery-hugging-candles` (374.7 KiB) and `gallery-ceramic-pots` (268.0 KiB, a 3429x4556 image shown at 388x516), followed by `gallery-twisted-blue` (75.7 KiB).
+- I tested resizing the ceramic pots image to its displayed width of 388 px. The file dropped from 1.83 MB to 17.0 kB, but the image was visibly soft when zoomed in, and visitors to a gallery are likely to zoom in. I kept the full-resolution images and accepted the larger files.
+
+<details>
+<summary>Stage 1 screenshots (baseline)</summary>
+
+Scores 70, 70, 71. LCP 7.8 s, 7.6 s, 7.5 s. CLS 0.006, 0.007, 0.006.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Gallery stage 1 run 1](assets/screenshots/lighthouse/gallery-stage1-run1.png) | ![Gallery stage 1 run 2](assets/screenshots/lighthouse/gallery-stage1-run2.png) | ![Gallery stage 1 run 3](assets/screenshots/lighthouse/gallery-stage1-run3.png) |
+
+LCP request discovery (`fetchpriority=high` missing on the LCP image):
+
+![Gallery stage 1 LCP request discovery](assets/screenshots/lighthouse/gallery-stage1-lcp-discovery.png)
+
+Improve image delivery (969 KiB estimated savings):
+
+![Gallery stage 1 improve image delivery](assets/screenshots/lighthouse/gallery-stage1-image-delivery.png)
+
+</details>
+
+<details>
+<summary>Stage 2 screenshots (fetchpriority and lazy loading)</summary>
+
+Scores 76, 84, 83. LCP 4.9 s, 3.8 s, 3.9 s. CLS 0.006, 0.007, 0.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Gallery stage 2 run 1](assets/screenshots/lighthouse/gallery-stage2-run1.png) | ![Gallery stage 2 run 2](assets/screenshots/lighthouse/gallery-stage2-run2.png) | ![Gallery stage 2 run 3](assets/screenshots/lighthouse/gallery-stage2-run3.png) |
+
+The gallery HTML with `fetchpriority="high"` and `loading="lazy"`:
+
+![Gallery HTML after stage 2](assets/screenshots/lighthouse/gallery-stage2-code.png)
+
+</details>
+
+<details>
+<summary>Stage 3 screenshots (WebP conversion and compression)</summary>
+
+Scores 84, 73, 79. LCP 3.1 s, 3.4 s, 4.4 s. CLS 0.13, 0.263, 0.007.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Gallery stage 3 run 1](assets/screenshots/lighthouse/gallery-stage3-run1.png) | ![Gallery stage 3 run 2](assets/screenshots/lighthouse/gallery-stage3-run2.png) | ![Gallery stage 3 run 3](assets/screenshots/lighthouse/gallery-stage3-run3.png) |
+
+An extra run on the same code (score 85, LCP 3.6 s, CLS 0):
+
+![Gallery stage 3 extra run](assets/screenshots/lighthouse/gallery-stage3-extra-run.png)
+
+Squoosh settings (quality 80) on the ceramic pots image, which was 1.83 MB originally:
+
+![Squoosh WebP conversion](assets/screenshots/lighthouse/gallery-stage3-squoosh.png)
+
+First compression pass (Squoosh, then TinyJPG). This reduced the files further, but `gallery-hugging-candles` and `gallery-ceramic-pots` lost visible quality, so I re-uploaded the originals and compressed them once, through Squoosh only:
+
+![TinyJPG results](assets/screenshots/lighthouse/gallery-stage3-tinyjpg.png)
+
+Resize test at 388 px, original against resized:
+
+| Original | 388 px |
+| --- | --- |
+| ![Original size](assets/screenshots/lighthouse/gallery-stage3-resize-original.png) | ![Resized to 388 px](assets/screenshots/lighthouse/gallery-stage3-resize-388px.png) |
+
+Zoomed in:
+
+| Original | 388 px |
+| --- | --- |
+| ![Original size, zoomed](assets/screenshots/lighthouse/gallery-stage3-resize-original-zoom.png) | ![Resized to 388 px, zoomed](assets/screenshots/lighthouse/gallery-stage3-resize-388px-zoom.png) |
+
+Lighthouse panels from the third run:
+
+![Improve image delivery](assets/screenshots/lighthouse/gallery-stage3-image-delivery.png)
+
+![LCP breakdown](assets/screenshots/lighthouse/gallery-stage3-lcp-breakdown.png)
+
+![Layout shift culprits](assets/screenshots/lighthouse/gallery-stage3-layout-shift.png)
 
 </details>
 
