@@ -34,6 +34,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Home page performance](#home-page-performance)
     - [Candles page performance](#candles-page-performance)
     - [Gallery page performance](#gallery-page-performance)
+    - [Custom orders page performance](#custom-orders-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
 - [Credits](#credits)
 
@@ -328,6 +329,7 @@ Performance was tested with Lighthouse in Chrome DevTools on the live pages (`ht
 | Home | 78 | 76 | 5.0 s | 5.1 s |
 | Candles | 71 | 78 | 7.1 s | 4.7 s |
 | Gallery | 70 | 79 | 7.6 s | 3.4 s |
+| Custom orders | 81 | 82 | 4.2 s | 3.9 s |
 
 Accessibility scored **100** and Best Practices **96** on every run so far. Total Blocking Time was 0 ms throughout.
 
@@ -590,6 +592,90 @@ Lighthouse panels from the third run:
 ![LCP breakdown](assets/screenshots/lighthouse/gallery-stage3-lcp-breakdown.png)
 
 ![Layout shift culprits](assets/screenshots/lighthouse/gallery-stage3-layout-shift.png)
+
+</details>
+
+#### Custom orders page performance
+
+| Stage | Change | Performance | FCP | LCP | CLS |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Baseline | 81 | 2.9 s | 4.2 s | 0.018 |
+| 2 | `fetchpriority="high"` on the LCP image | 80 | 3.0 s | 4.3 s | 0.018 |
+| 3 | Images converted to WebP | 82 | 2.9 s | 3.9 s | 0.018 |
+
+Median of three mobile runs per stage on the live site. Total Blocking Time was 0 ms in every run except one at Stage 2 (50 ms), and Accessibility (100) and Best Practices (96) did not change.
+
+**What I changed**
+
+- **Stage 2:** added `fetchpriority="high"` to the gift candles image, which Lighthouse identified as the LCP image. I left the memorial candles image as it was, because the top of it is already visible on the first mobile screen.
+- **Stage 3:** converted both images to WebP with Squoosh (quality 75) at their original size, 1408x768. I did not compress them any further.
+
+**Notes**
+
+- The overall change is small. The score went from 81 to 82 and LCP from 4.2 s to 3.9 s. The score difference is within the variation between runs. The clearest change is LCP at Stage 3, where all three runs (3.7-4.1 s) were faster than all three Stage 2 runs (4.2-5.1 s).
+- `fetchpriority` made no measurable difference at Stage 2. The LCP breakdown shows a resource load delay of only 60 ms, so the image was already being requested early. That is most likely why there was little left to improve on a page with two images.
+- The first baseline run (score 92, FCP 1.7 s, LCP 3.2 s) was much faster than the other two. I kept it in the results. The median is not affected by it.
+- CLS was 0.127 in one Stage 3 run and 0.018 in the other two. I did not capture a layout shift panel from that run, so the cause is unconfirmed.
+- The two images are now 143.0 KiB in total, down from 269.5 KiB (47% smaller).
+- Lighthouse still reports about 132 KiB of possible savings, all of it because the images are larger (1408x768) than their displayed size (388x212). I kept them at full resolution so they stay sharp on large and high-density screens.
+- FCP stayed at 2.9-3.0 s, as on the other pages, apart from the fast first baseline run.
+
+<details>
+<summary>Stage 1 screenshots (baseline)</summary>
+
+Scores 92, 76, 81. FCP 1.7 s, 2.9 s, 2.9 s. LCP 3.2 s, 5.1 s, 4.2 s. CLS 0.018, 0.018, 0.007.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Custom orders stage 1 run 1](assets/screenshots/lighthouse/custom-orders-stage1-run1.png) | ![Custom orders stage 1 run 2](assets/screenshots/lighthouse/custom-orders-stage1-run2.png) | ![Custom orders stage 1 run 3](assets/screenshots/lighthouse/custom-orders-stage1-run3.png) |
+
+LCP request discovery (`fetchpriority=high` missing on the LCP image):
+
+![Custom orders stage 1 LCP request discovery](assets/screenshots/lighthouse/custom-orders-stage1-lcp-discovery.png)
+
+Improve image delivery (249 KiB estimated savings):
+
+![Custom orders stage 1 improve image delivery](assets/screenshots/lighthouse/custom-orders-stage1-image-delivery.png)
+
+</details>
+
+<details>
+<summary>Stage 2 screenshots (fetchpriority)</summary>
+
+Scores 80, 76, 80. LCP 4.3 s, 5.1 s, 4.2 s. CLS 0.007, 0.018, 0.018.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Custom orders stage 2 run 1](assets/screenshots/lighthouse/custom-orders-stage2-run1.png) | ![Custom orders stage 2 run 2](assets/screenshots/lighthouse/custom-orders-stage2-run2.png) | ![Custom orders stage 2 run 3](assets/screenshots/lighthouse/custom-orders-stage2-run3.png) |
+
+LCP breakdown from the third run:
+
+![Custom orders stage 2 LCP breakdown](assets/screenshots/lighthouse/custom-orders-stage2-lcp-breakdown.png)
+
+</details>
+
+<details>
+<summary>Stage 3 screenshots (WebP conversion)</summary>
+
+Scores 82, 80, 83. LCP 4.1 s, 3.7 s, 3.9 s. CLS 0.018, 0.127, 0.018.
+
+| Run 1 | Run 2 | Run 3 |
+| --- | --- | --- |
+| ![Custom orders stage 3 run 1](assets/screenshots/lighthouse/custom-orders-stage3-run1.png) | ![Custom orders stage 3 run 2](assets/screenshots/lighthouse/custom-orders-stage3-run2.png) | ![Custom orders stage 3 run 3](assets/screenshots/lighthouse/custom-orders-stage3-run3.png) |
+
+Squoosh conversion (quality 75). The gift image went from 138 kB to 73.1 kB and the memorial image from 137 kB to 73.4 kB, 47% smaller in each case:
+
+| Gift candles | Memorial candles |
+| --- | --- |
+| ![Squoosh gift image](assets/screenshots/lighthouse/custom-orders-stage3-squoosh-gift.png) | ![Squoosh memorial image](assets/screenshots/lighthouse/custom-orders-stage3-squoosh-memorial.png) |
+
+The updated HTML:
+
+![Custom orders HTML after stage 3](assets/screenshots/lighthouse/custom-orders-stage3-code.png)
+
+Improve image delivery from the third run (132 KiB estimated savings, all from the displayed-size warning):
+
+![Custom orders stage 3 improve image delivery](assets/screenshots/lighthouse/custom-orders-stage3-image-delivery.png)
 
 </details>
 
