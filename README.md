@@ -36,6 +36,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Gallery page performance](#gallery-page-performance)
     - [Custom orders page performance](#custom-orders-page-performance)
     - [Success page performance](#success-page-performance)
+    - [404 page performance](#404-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
 - [Project Management](#project-management)
 - [Credits](#credits)
@@ -169,6 +170,14 @@ On small screens, the links collapse into a menu button, which opens to show the
 
 <img src="assets/screenshots/success-desktop.jpg" alt="Success page on a desktop screen" width="650">
 
+### 404 page
+
+- A friendly "Page not found" message with a button back to the Home page, shown when a visitor opens an address that does not exist on the site.
+- The page keeps the same navigation bar and footer as the other pages, so visitors can still move around the site.
+- The page is not in the navigation menu. GitHub Pages shows it automatically when a page cannot be found.
+
+<img src="assets/screenshots/404-desktop.png" alt="404 page on a desktop screen" width="650">
+
 ## Testing
 
 ### Bugs found and fixed
@@ -269,6 +278,7 @@ Each page was checked with the [W3C Nu HTML Checker](https://validator.w3.org/nu
 | gallery.html | Pass |
 | custom-orders.html | Pass |
 | success.html | Pass |
+| 404.html | Pass |
 
 **Issue found on the Home page:** the validator reported an error and a warning. The hero was a `<section>` with `role="img"`, which is not allowed on that element, and the intro was a `<section>` without a heading. Both were changed to `<div>` elements, and the page then passed.
 
@@ -290,6 +300,8 @@ Each page was checked with the [W3C Nu HTML Checker](https://validator.w3.org/nu
 **Custom orders:** ![Validator report for custom-orders.html with no errors or warnings](assets/screenshots/validator-html-custom-orders.png)
 
 **Success:** ![Validator report for success.html with no errors or warnings](assets/screenshots/validator-html-success.png)
+
+**404:** ![Validator report for 404.html with no errors or warnings](assets/screenshots/validator-html-404.png)
 
 </details>
 
@@ -332,7 +344,8 @@ Performance was tested with Lighthouse in Chrome DevTools on the live pages (`ht
 | Candles | 71 | 78 | 7.1 s | 4.7 s |
 | Gallery | 70 | 79 | 7.6 s | 3.4 s |
 | Custom orders | 81 | 82 | 4.2 s | 3.9 s |
-| Success | 90 | 90 | 2.9 s | 2.9 s |
+| Success (baseline only) | 90 | 90 | 2.9 s | 2.9 s |
+| 404 (baseline only) | 92 | 92 | 2.7 s | 2.7 s |
 
 Accessibility scored **100** and Best Practices **96** on every run so far. Total Blocking Time was 0 ms throughout.
 
@@ -711,9 +724,39 @@ Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 
 
 </details>
 
+#### 404 page performance
+
+| Stage | Performance | Accessibility | Best Practices | FCP | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| Baseline (no changes needed) | 92 | 100 | 92 | 2.6 s | 2.7 s | 0.018 | 0 ms |
+
+**What I changed**
+
+- Nothing. The page is text only, scored 92 at baseline, and the items Lighthouse flagged either cannot be removed (see Notes) or are shared by every page (see Performance testing limitations).
+
+**Notes**
+
+- This page was tested once, not three times, so these figures are a single run and not a median.
+- Lighthouse shows a warning that it was "unable to reliably load the page" with "Status code: 404". This is expected, because an error page is meant to return a 404 status. The scores were still calculated from the page that loaded.
+- Best Practices scored 92 because of a console error, "Failed to load resource: the server responded with a status of 404". This is the browser logging the page's own 404 status, so it cannot be removed without making the page return a normal status.
+- The other flagged items are shared by every page (the logo size and the render-blocking stylesheets) and are covered in Performance testing limitations.
+
+<details>
+<summary>Baseline evidence</summary>
+
+**Run:**
+
+![Lighthouse mobile report for the 404 page](assets/screenshots/lighthouse/404-stage1-run1.png)
+
+**Console error:**
+
+![Lighthouse Best Practices showing the 404 console error](assets/screenshots/lighthouse/404-stage1-console-error.png)
+
+</details>
+
 #### Performance testing limitations
 
-- **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (on the Home page CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. Replacing it with `<link>` tags in each page's `<head>` would be the next improvement.
+- **Google Fonts `@import`:** Lighthouse flags this as render-blocking, and the late-loading fonts cause the occasional layout shift (on the Home page CLS varied between 0.006 and 0.143 between runs). The 0.143 shift also appeared in one baseline run, before any of my changes, so it comes from the fonts and not from the image work. I kept `@import` in the stylesheet deliberately, as it is the method taught on the course. 
 - **Cache lifetimes:** Lighthouse suggests longer caching, but GitHub Pages does not allow the cache headers to be changed.
 - **Image sizes:** Lighthouse flags several images as larger than their displayed size, because it tests at a phone-sized viewport where they appear about 388 px wide (on the Gallery and Custom orders pages). I kept the images at their original dimensions instead of resizing them, for two reasons:
   - **Sharpness:** when I resized the largest Gallery image to 388 px, the file dropped from 1.83 MB to 17.0 kB, but it looked visibly soft when zoomed in. Visitors to a gallery are likely to zoom in to judge the quality of the candles, and phones with high-density screens need roughly twice the displayed width to look sharp.
@@ -721,7 +764,7 @@ Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 
 
   I reduced the file sizes with WebP conversion and compression instead, and accepted that Lighthouse still reports potential savings, for example about 829 KiB on the Gallery and 132 KiB on Custom orders. 
 
-- **Run-to-run variation:** results differ between identical runs because conditions are never exactly the same: the quality of my broadband connection at the time, how quickly GitHub Pages and the CDNs (jsDelivr and Google Fonts) respond, and how busy my computer is. A single run can therefore be unusually fast or slow, so I ran each stage three times and report the median, which stops one unusual run from deciding the result. Three runs also gives a clear middle value without making the testing take too long. Every individual run is shown in the screenshots, and small differences between stages should not be over-interpreted.
+- **Run-to-run variation:** results differ between identical runs because conditions are never exactly the same: the quality of my broadband connection at the time, how quickly GitHub Pages and the CDNs (jsDelivr and Google Fonts) respond, and how busy my computer is. A single run can therefore be unusually fast or slow, so I normally ran each stage three times and report the median, which stops one unusual run from deciding the result. Three runs also gives a clear middle value without making the testing take too long. Every individual run is shown in the screenshots, and small differences between stages should not be over-interpreted.
 
 - **Render-blocking stylesheets:** every page loads the same three stylesheets in its `<head>`: Bootstrap CSS from jsDelivr, the Google Fonts CSS and my own `style.css`. Lighthouse lists them as render-blocking, with an estimated 2,060 ms of potential savings. That figure is an estimate and is not part of the score. They style the whole site, so I left them in place. This is also why FCP stays at around 3 s across the pages.
 
@@ -729,6 +772,16 @@ Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 
 <summary>Render-blocking requests (Lighthouse, captured on the Success page)</summary>
 
 ![Lighthouse render-blocking requests](assets/screenshots/lighthouse/render-blocking-requests.png)
+
+</details>
+<br>
+
+- **Logo size:** Lighthouse flags the navbar logo (`favicon-32x32.png`) on every page as "Serves images with low resolution". It is displayed at 32×32 pixels and Lighthouse expects 48×48 for high-density screens. I left it because the logo is small and looks sharp at its displayed size, and this is the reason Best Practices scores 92 on the pages where nothing else is flagged.
+
+<details>
+<summary>Low-resolution image flag (Lighthouse, captured on the 404 page)</summary>
+
+![Lighthouse low-resolution image panel](assets/screenshots/lighthouse/logo-low-resolution.png)
 
 </details>
 
