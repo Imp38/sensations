@@ -37,6 +37,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [Custom orders page performance](#custom-orders-page-performance)
     - [Success page performance](#success-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
+- [Project Management](#project-management)
 - [Credits](#credits)
 
 ## UX
