@@ -29,6 +29,7 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
   - [Code validation](#code-validation)
     - [HTML](#html)
     - [CSS](#css)
+    - [Manual Testing](#manual-testing)
   - [Performance Testing](#performance-testing)
     - [Summary across pages](#summary-across-pages)
     - [Home page performance](#home-page-performance)
@@ -331,6 +332,57 @@ The validator shows five warnings. They are expected: it cannot check the Google
 ![CSS validator report with no errors](assets/screenshots/validator-css.png)
 
 </details>
+
+### Manual Testing
+
+I tested the features by hand on the live site, recording what I expected to happen and what actually happened.
+
+#### Responsiveness
+
+| Screen size | Device type | Viewport width | Result | Comment |
+|---|---|---|---|---|
+| Mobile | Smartphone | 375px | ✅ Pass | Content stacks in one column, the navbar collapses to the hamburger menu and nothing scrolls sideways |
+| Tablet | Tablet | 768px | ✅ Pass | Layout adjusts and images are not cut off |
+| Laptop | Small laptop/desktop | 1024px | ✅ Pass | Full navbar shows and content stays within the page width |
+
+#### Navbar
+
+| Test | Expected result | Result | Comment |
+|---|---|---|---|
+| Resize to different device sizes | The navbar adjusts to the screen size | ✅ Pass | Responds at mobile, tablet and desktop widths on every page |
+| Hamburger menu on mobile | The menu opens and closes when the hamburger icon is tapped | ✅ Pass | On phone-width screens the links collapse into the hamburger menu |
+| Click Home, Candles, Gallery and Custom orders | Each link opens its own page | ✅ Pass | Tested from every page |
+| Click Contact | The page scrolls to the contact section in the footer | ✅ Pass | Contact is an anchor (`#contact`) to the footer, which is on every page, so it works from each one |
+| Click the Sensations logo | The Home page opens | ✅ Pass | The logo and site name are a link to the Home page |
+
+#### Return-to-home buttons
+
+| Test | Expected result | Result | Comment |
+|---|---|---|---|
+| "Return to home" on the Success page | The Home page opens | ✅ Pass | Reached by sending the Custom orders form |
+| "Back to home" on the 404 page | The Home page opens | ✅ Pass | Tested on the live site at a mistyped address (`/sensations/not-a-page`) |
+| Visit an address that does not exist | The custom 404 page appears with the navbar and footer | ✅ Pass | Tested on the live site; GitHub Pages serves `404.html` automatically |
+
+#### Custom orders enquiry form
+
+| Test | Expected result | Result | Comment |
+|---|---|---|---|
+| Submit with Name empty | The form does not send and a message appears at the Name box asking for it to be filled in | ✅ Pass | |
+| Submit with Email empty | The form does not send and a message appears at the Email box | ✅ Pass | |
+| Enter an email without an @ symbol | The form does not send and a message asks for an @ to be included | ✅ Pass | Email field checks the format as well as being required |
+| Submit with Size of gift not selected | The form does not send and a message appears at the drop-down | ✅ Pass | A choice has to be selected |
+| Submit with Occasion not selected | The form does not send and a message appears at the drop-down | ✅ Pass | A choice has to be selected |
+| Submit with Scent ideas empty | The form does not send and a message appears at the Scent ideas box | ✅ Pass | |
+| Submit with the crackle wick box and message left empty | The form sends normally | ✅ Pass | These two fields are optional by design |
+| Fill in all required fields and submit | The Success page opens | ✅ Pass | |
+#### Footer social links
+
+| Test | Expected result | Result | Comment |
+|---|---|---|---|
+| Icons present | Facebook, Instagram and X icons show in the footer | ✅ Pass | Same footer on every page |
+| Click each icon | Site opens in a new tab and the Sensations tab stays open | ✅ Pass | Links go to each site's home page, because Sensations is a fictional business |
+| Link attributes | Each link has `target="_blank"` and `rel="noopener"` | ✅ Pass | Checked in the footer code |
+| Hover over an icon | Icon changes colour | ✅ Pass | Uses the CSS `:hover` rule on `.social-link` |
 
 ### Performance Testing
 
