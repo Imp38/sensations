@@ -731,6 +731,12 @@ Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 
 
 </details>
 
+## Project Management
+
+I planned and tracked Sensations with a GitHub Projects board. Each requirement was written as a user story and moved across the board (Todo, In Progress, Done) as I built it. Stories were labelled must-have, should-have or could-have, so the essential features were built first. All must-have and should-have stories are complete. The one remaining could-have story (#9, the sound-recording candle) is deliberately left In Progress, because the site presents it as "coming soon". You can view the [Sensations project board](https://github.com/users/Imp38/projects/3).
+
+![Sensations project board showing nine completed user stories and one could-have story in progress](assets/screenshots/board-final.png)
+
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
