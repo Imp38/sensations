@@ -40,6 +40,12 @@ Welcome to Sensations, where a candle becomes something more. Whether you want t
     - [404 page performance](#404-page-performance)
     - [Performance testing limitations](#performance-testing-limitations)
 - [Project Management](#project-management)
+- [Deployment](#deployment)
+  - [Before you start](#before-you-start)
+  - [Creating your own copy and deploying it](#creating-your-own-copy-and-deploying-it)
+  - [Running the site on your own computer](#running-the-site-on-your-own-computer)
+  - [Saving and publishing changes](#saving-and-publishing-changes)
+  - [External links and kits](#external-links-and-kits)
 - [Credits](#credits)
 
 ## UX
@@ -842,6 +848,107 @@ Scores 90, 92, 90. FCP 2.9 s, 2.4 s, 2.9 s. LCP 2.9 s, 2.9 s, 2.9 s. CLS 0.016, 
 I planned and tracked Sensations with a GitHub Projects board. Each requirement was written as a user story and moved across the board (Todo, In Progress, Done) as I built it. Stories were labelled must-have, should-have or could-have, so the essential features were built first. All must-have and should-have stories are complete. The one remaining could-have story (#9, the sound-recording candle) is deliberately left In Progress, because the site presents it as "coming soon". You can view the [Sensations project board](https://github.com/users/Imp38/projects/3).
 
 ![Sensations project board showing nine completed user stories and one could-have story in progress](assets/screenshots/board-final.png)
+
+## Deployment
+
+The site is deployed with GitHub Pages and is live at https://imp38.github.io/sensations/.
+
+### Before you start
+
+You need a free GitHub account, a code editor (this project used Visual Studio Code) and Git installed on your computer. Python 3 is only needed if you want to preview the site with a local web server. Otherwise no other software is needed, because the site is plain HTML, CSS and a little JavaScript, and Bootstrap and Font Awesome load from the web.
+
+### Creating your own copy and deploying it
+
+A fork is your own copy of the repository under your account. You can change it freely, and your changes do not affect the original project.
+
+1. Go to https://github.com and click **Sign up**. Follow the steps to create an account and verify your email address.
+2. Open the [Sensations repository](https://github.com/Imp38/sensations) and click **Fork** at the top right. Choose your account as the owner and click **Create fork**. This puts a full copy of the project in your own account.
+3. In your fork, go to **Settings**, then **Pages** in the left-hand menu.
+4. Under **Build and deployment**, set the source to **Deploy from a branch**.
+5. Under **Branch**, choose **main** and the **/ (root)** folder, then click **Save**.
+6. Wait a minute or two, then refresh the Pages settings. The link to your live site appears at the top, in the form `https://your-username.github.io/sensations/`.
+
+Every time you push a change to `main`, GitHub rebuilds and redeploys the site automatically.
+
+### Running the site on your own computer
+
+1. Install Git from https://git-scm.com and a code editor such as Visual Studio Code.
+2. Open your fork on GitHub, click the green **Code** button and copy the HTTPS link.
+3. Open a terminal in the folder where you want the project and run:
+
+   ```
+   git clone https://github.com/your-username/sensations.git
+   ```
+
+4. Open the new `sensations` folder in your editor.
+5. Open a terminal inside the project folder. In Visual Studio Code, choose **Terminal**, then **New Terminal** from the top menu, or press **Ctrl+`** (the backtick key, below Esc). The terminal opens in the project folder.
+6. Start a local web server by running:
+
+   ```
+   python3 -m http.server
+   ```
+
+   If `python3` is not recognised, try `python -m http.server` instead. This needs Python 3 installed from https://www.python.org.
+
+7. Open a browser and go to `http://localhost:8000`. The Sensations home page loads.
+8. To stop the server, click in the terminal and press **Ctrl+C**.
+
+Alternatively, open `index.html` directly in a browser, or use the Live Server extension in Visual Studio Code and choose **Open with Live Server**.
+
+### Saving and publishing changes
+
+After editing files, the changes reach GitHub in three steps: stage, commit and push. Run these commands in a terminal opened in the project folder (see the previous section).
+
+1. Check what has changed:
+
+   ```
+   git status
+   ```
+
+   Changed files are listed in red, and files that are ready to commit are in green.
+
+2. Stage the changes. To stage everything that has changed:
+
+   ```
+   git add .
+   ```
+
+   To stage only specific files, name them instead:
+
+   ```
+   git add index.html
+   git add README.md assets/screenshots/board-final.png
+   ```
+
+   To stage every file in one folder:
+
+   ```
+   git add assets/screenshots/
+   ```
+
+3. Commit the staged changes with a short message that says what changed:
+
+   ```
+   git commit -m "Add 404 page"
+   ```
+
+4. Push the commit to the `main` branch on GitHub:
+
+   ```
+   git push
+   ```
+
+The first time you push, Git asks you to sign in to GitHub, usually by opening a browser window. Sign in with your GitHub account and approve the request. Git remembers this on your computer, so you only do it once. You can only push to repositories you own, which is why you push to your fork and not to the original.
+
+GitHub Pages then rebuilds the site, and the changes appear on the live site after a minute or two. A hard refresh (Ctrl+Shift+R) shows the newest version.
+
+I committed related changes together and unrelated ones separately, for example adding screenshots in one commit and the README that uses them in the next. This keeps the history easy to read and means each commit does one job.
+
+### External links and kits
+
+The site loads Bootstrap CSS and JavaScript from the jsDelivr CDN and fonts from Google Fonts. These need an internet connection but no account or setup.
+
+The icons come from a Font Awesome kit linked to my own account, so they will also show on a copy of the site. If you would rather use your own, create a free account at https://fontawesome.com, make a kit, and replace the kit `<script>` line in each HTML page with the one Font Awesome gives you.
 
 ## Credits
 
