@@ -953,7 +953,9 @@ The icons come from a Font Awesome kit linked to my own account, so they will al
 ## Credits
 
 - Favicon: candle emoji graphic from [Twemoji](https://github.com/twitter/twemoji), copyright 2020 Twitter, Inc and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Generated with [favicon.io](https://favicon.io).
-- Hero, intro, mood card, candle, custom order and some gallery images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/).
+- Image optimisation: images converted to WebP and compressed with [Squoosh](https://squoosh.app/) and [TinyJPG](https://tinyjpg.com/).
+- AI assistance: I used Claude (Anthropic) as a tutor and reviewer while building the site. It explained concepts and reviewed my code. Screenshots are shown in [ai-prompts](ai-prompts/claude/).
+- Hero, intro, mood card, candle, custom order and some gallery images: generated with Google Gemini. The prompts and results are in [ai-prompts](ai-prompts/gemini/).
 - Gallery photo: [black & white candles](https://unsplash.com/photos/black-and-white-candle-on-brown-wooden-holder-YasQvzPbGOQ) by Hanna Balan on Unsplash used under the [Unsplash License](https://unsplash.com/license)
 - Gallery photo of two hugging candles: [Two brown candles](https://unsplash.com/photos/two-brown-candles-ZDZzaTh8elk) by Dmitri Leychu on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
 - Christmas tree candle: [A small red christmas tree](https://unsplash.com/photos/a-small-christmas-tree-made-out-of-folded-paper-ZhKdPOaC9yA) by Ionela Mat on Unsplash, used under the [Unsplash License](https://unsplash.com/license)
